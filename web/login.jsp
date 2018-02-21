@@ -30,12 +30,12 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Smart</b>Lab</a>
+    <a href="user_starter.jsp"><b>Smart</b>Lab</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">登录您的会话</p>
-    <form action="index2.html" method="post">
+    <form action="user_starter.jsp" method="post">
       <div class="form-group has-feedback">
         <input type="email" class="form-control" placeholder="用户名">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
