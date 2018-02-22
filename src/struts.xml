@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+    <constant name="struts.convention.default.parent.package" value="struts-default"/>
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
+    
+    <package name="default" extends="struts-default">
+        <action name="login" class="org.mrhu.smartlab.action.LoginAction" method="login">
+            <result name="user_success">/user_starter.jsp</result>
+            <result name="admin_success">/admin_starter.jsp</result>
+            <result name="password_error">/login.jsp</result>
+            <result name="do_not_exist">/login.jsp</result>
+            <allowed-methods>login</allowed-methods>
+        </action>
+        
+    </package>
+</struts>

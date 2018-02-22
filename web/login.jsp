@@ -35,13 +35,13 @@
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">登录您的会话</p>
-    <form action="user_starter.jsp" method="post">
+    <form action="login" method="post" >
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="用户名">
+        <input type="text" class="form-control" placeholder="用户名" name="username">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="密码">
+        <input type="password" class="form-control" placeholder="密码" name="password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
@@ -51,6 +51,9 @@
               <input type="checkbox"> 记住密码
             </label>
           </div>
+        </div>
+        <div class="col-xs-8">
+          ${loginStatus}
         </div>
         <!-- /.col -->
         <div class="col-xs-4">

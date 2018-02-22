@@ -1,5 +1,5 @@
 <%--
-  User: Mr.Hu
+  User: ${name}
 --%>
 <%@ page contentType="text/html;charset=utf-8" language="java" %>
 <!DOCTYPE html>
@@ -35,7 +35,7 @@
 			<!-- Main Header -->
 			<header class="main-header">
 				<!-- Logo -->
-				<a href="index2.html" class="logo">
+				<a href="login.jsp" class="logo">
 					<!-- mini logo for sidebar mini 50x50 pixels -->
 					<span class="logo-mini"><b>S</b>Lab</span>
 					<!-- logo for regular state and mobile devices -->
@@ -58,14 +58,14 @@
 									<!-- The user image in the navbar-->
 									<img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
 									<!-- hidden-xs hides the username on small devices so only the image appears. -->
-									<span class="hidden-xs">Mr.Hu</span>
+									<span class="hidden-xs">${name}</span>
 								</a>
 								<ul class="dropdown-menu">
 									<!-- The user image in the menu -->
 									<li class="user-header">
 										<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 										<p>
-											Mr.Hu - WebApplication Developer
+											 - WebApplication Developer
 											<small>Member since Nov. 2016</small>
 										</p>
 									</li>
@@ -95,7 +95,7 @@
 							<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 						</div>
 						<div class="pull-left info">
-							<p>Mr.Hu</p>
+							<p>${name}</p>
 							<!-- Status -->
 							<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 						</div>
@@ -174,7 +174,7 @@
 									<tr>
 										<td>SmartLab实验室管理系统开发</td>
 										<td>JYN8-67KF-UYS9</td>
-										<td>MR.HU</td>
+										<td>${name}</td>
 										<td>
 											<div class="progress progress-xs progress-striped active">
 												<div class="progress-bar progress-bar-success" style="width: 90%"></div>
@@ -187,7 +187,7 @@
 									<tr>
 										<td>SmartLab实验室管理系统开发</td>
 										<td>JYN8-67KF-UYS9</td>
-										<td>MR.HU</td>
+										<td>${name}</td>
 										<td>
 											<div class="progress progress-xs progress-striped active">
 												<div class="progress-bar progress-bar-success" style="width: 90%"></div>
@@ -200,7 +200,7 @@
 									<tr>
 										<td>SmartLab实验室管理系统开发</td>
 										<td>JYN8-67KF-UYS9</td>
-										<td>MR.HU</td>
+										<td>${name}</td>
 										<td>
 											<div class="progress progress-xs progress-striped active">
 												<div class="progress-bar progress-bar-success" style="width: 90%"></div>
@@ -236,7 +236,7 @@
 					任何你想到的
 				</div>
 				<!-- Default to the left -->
-				<strong>Copyright &copy; 2018 <a href="https://github.com/MonkeyAndDog/">Mr.Hu</a>.</strong> All rights reserved.
+				<strong>Copyright &copy; 2018 <a href="https://github.com/MonkeyAndDog/">${name}</a>.</strong> All rights reserved.
 			</footer>
 
 			<!-- Add the sidebar's background. This div must be placed

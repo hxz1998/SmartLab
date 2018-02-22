@@ -2,6 +2,7 @@
   User: Mr.Hu
 --%>
 <%@ page contentType="text/html;charset=utf-8" language="java" %>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html>
 <html>
 
@@ -35,7 +36,7 @@
 			<!-- Main Header -->
 			<header class="main-header">
 				<!-- Logo -->
-				<a href="index2.html" class="logo">
+				<a href="login.jsp" class="logo">
 					<!-- mini logo for sidebar mini 50x50 pixels -->
 					<span class="logo-mini"><b>S</b>Lab</span>
 					<!-- logo for regular state and mobile devices -->
@@ -58,7 +59,7 @@
 									<!-- The user image in the navbar-->
 									<img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
 									<!-- hidden-xs hides the username on small devices so only the image appears. -->
-									<span class="hidden-xs">Mr.Hu</span>
+									<span class="hidden-xs">${name}</span>
 								</a>
 								<ul class="dropdown-menu">
 									<!-- The user image in the menu -->
@@ -95,7 +96,7 @@
 							<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 						</div>
 						<div class="pull-left info">
-							<p>Mr.Hu</p>
+							<p>${name}</p>
 							<!-- Status -->
 							<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 						</div>
@@ -392,7 +393,6 @@
 				<!-- Default to the left -->
 				<strong>Copyright &copy; 2018 <a href="https://github.com/MonkeyAndDog/">Mr.Hu</a>.</strong> All rights reserved.
 			</footer>
-
 			<!-- Add the sidebar's background. This div must be placed
   immediately after the control sidebar -->
 			<div class="control-sidebar-bg"></div>
@@ -413,9 +413,7 @@
 			window.onload = initDate;
 		</script>
 
-		<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. -->
+
 	</body>
 
 </html>
