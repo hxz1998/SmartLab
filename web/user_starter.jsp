@@ -57,7 +57,7 @@
 									<!-- The user image in the navbar-->
 									<img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
 									<!-- hidden-xs hides the username on small devices so only the image appears. -->
-									<span class="hidden-xs">${name}</span>
+									<span class="hidden-xs">${session.name}</span>
 								</a>
 								<ul class="dropdown-menu">
 									<!-- The user image in the menu -->
@@ -73,7 +73,7 @@
 							<!-- Menu Footer-->
 							<li class="user-footer">
 								<div class="pull-right">
-									<a href="#" class="btn btn-default btn-flat">登出</a>
+									<a href="logout" class="btn btn-default btn-flat">登出</a>
 								</div>
 							</li>
 							</ul>
@@ -94,7 +94,7 @@
 							<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 						</div>
 						<div class="pull-left info">
-							<p>${name}</p>
+							<p>${session.name}</p>
 							<!-- Status -->
 							<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 						</div>
@@ -154,7 +154,7 @@
 							<div class="box-tools pull-right">
 								<ul class="pagination pagination-sm inline">
 									<li>
-										<a href="user_newslist.jsp">更多 &nbsp; &nbsp;&raquo;</a>
+										<a href="user_news_list.jsp">更多 &nbsp; &nbsp;&raquo;</a>
 									</li>
 								</ul>
 							</div>

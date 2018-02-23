@@ -35,7 +35,7 @@
 			<!-- Main Header -->
 			<header class="main-header">
 				<!-- Logo -->
-				<a href="index2.html" class="logo">
+				<a href="login.jsp" class="logo">
 					<!-- mini logo for sidebar mini 50x50 pixels -->
 					<span class="logo-mini"><b>S</b>Lab</span>
 					<!-- logo for regular state and mobile devices -->
@@ -58,7 +58,7 @@
 									<!-- The user image in the navbar-->
 									<img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
 									<!-- hidden-xs hides the username on small devices so only the image appears. -->
-									<span class="hidden-xs">Mr.Hu</span>
+									<span class="hidden-xs">${session.name}</span>
 								</a>
 								<ul class="dropdown-menu">
 									<!-- The user image in the menu -->
@@ -69,12 +69,10 @@
 											<small>Member since Nov. 2016</small>
 										</p>
 									</li>
-
-							</li>
 							<!-- Menu Footer-->
 							<li class="user-footer">
 								<div class="pull-right">
-									<a href="#" class="btn btn-default btn-flat">登出</a>
+									<a href="logout" class="btn btn-default btn-flat">登出</a>
 								</div>
 							</li>
 							</ul>
@@ -85,17 +83,15 @@
 			</header>
 			<!-- Left side column. contains the logo and sidebar -->
 			<aside class="main-sidebar">
-
 				<!-- sidebar: style can be found in sidebar.less -->
 				<section class="sidebar">
-
 					<!-- Sidebar user panel (optional) -->
 					<div class="user-panel">
 						<div class="pull-left image">
 							<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 						</div>
 						<div class="pull-left info">
-							<p>Mr.Hu</p>
+							<p>${session.name}</p>
 							<!-- Status -->
 							<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 						</div>

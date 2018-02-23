@@ -2,6 +2,7 @@ package org.mrhu.smartlab.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import org.apache.struts2.interceptor.SessionAware;
 import org.mrhu.smartlab.dto.UserLoginDto;
 import org.mrhu.smartlab.model.Status;
 import org.mrhu.smartlab.model.User;
@@ -10,10 +11,11 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.Map;
 
 @Component
 @Scope("prototype")
-public class LoginAction extends ActionSupport implements ModelDriven<UserLoginDto>{
+public class LoginAction extends ActionSupport implements ModelDriven<UserLoginDto>, SessionAware{
 
     private static final String ADMIN = "admin_success";
     private static final String USER = "user_success";
@@ -24,6 +26,8 @@ public class LoginAction extends ActionSupport implements ModelDriven<UserLoginD
     private UserService userService;
     private String loginStatus;
     private String name;
+
+    private Map<String, Object> session;
 
 
     /**
@@ -43,12 +47,16 @@ public class LoginAction extends ActionSupport implements ModelDriven<UserLoginD
                     loadUser.getUsername().equals(user.getUsername()) &&
                     loadUser.getStatus().equals(Status.USER)) {
                 name = loadUser.getName();
+                session.put("username", loadUser.getUsername());
+                session.put("name", name);
                 return USER;
 
             } else if(loadUser.getPassword().equals(user.getPassword()) &&
                     loadUser.getUsername().equals(user.getUsername()) &&
                     loadUser.getStatus().equals(Status.ADMINISTRATOR)) {
                 name = loadUser.getName();
+                session.put("name", name);
+                session.put("username", loadUser.getUsername());
                 return ADMIN;
             } else if ( !loadUser.getPassword().equals(user.getPassword())){
                 loginStatus="密码错误";
@@ -95,5 +103,10 @@ public class LoginAction extends ActionSupport implements ModelDriven<UserLoginD
 
     public void setLoginStatus(String loginStatus) {
         this.loginStatus = loginStatus;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> session) {
+        this.session = session;
     }
 }

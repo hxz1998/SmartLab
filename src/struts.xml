@@ -18,6 +18,8 @@
             <result name="do_not_exist">/login.jsp</result>
             <allowed-methods>login</allowed-methods>
         </action>
-        
+        <action name="logout" class="org.mrhu.smartlab.action.LogOutAction">
+            <result name="success">/login.jsp</result>
+        </action>
     </package>
 </struts>
