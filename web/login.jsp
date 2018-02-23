@@ -35,7 +35,7 @@
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">登录您的会话</p>
-    <form action="login" method="post" >
+    <form action="login.action" method="post" >
       <div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="用户名" name="username">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>

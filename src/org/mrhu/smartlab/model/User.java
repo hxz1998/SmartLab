@@ -3,6 +3,7 @@ package org.mrhu.smartlab.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @GenericGenerator(name = "uuid", strategy = "uuid")
@@ -16,6 +17,9 @@ public class User implements Cloneable{
     private String contact;
     //定义了系统中身份
     private Status status;
+    private Date start;
+    private Date leave;
+
 
     @Override
     public Object clone() {
@@ -77,5 +81,25 @@ public class User implements Cloneable{
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "user_start")
+    public Date getStart() {
+        return start;
+    }
+
+    public void setStart(Date start) {
+        this.start = start;
+    }
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "user_leave")
+    public Date getLeave() {
+        return leave;
+    }
+
+    public void setLeave(Date leave) {
+        this.leave = leave;
     }
 }

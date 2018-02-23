@@ -35,7 +35,7 @@ public class UserDaoImplTest {
         user.setStatus(Status.USER);
         user.setName("呼啸中");
         user.setContact("1466947023");
-        userDao.saveUser(user);
+        userDao.save(user);
     }
 
 

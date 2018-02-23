@@ -10,7 +10,7 @@
     <constant name="struts.convention.default.parent.package" value="struts-default"/>
     <constant name="struts.i18n.encoding" value="UTF-8"/>
     
-    <package name="default" extends="struts-default">
+    <package name="default" extends="struts-default" >
         <action name="login" class="org.mrhu.smartlab.action.LoginAction" method="login">
             <result name="user_success">/user_starter.jsp</result>
             <result name="admin_success">/admin_starter.jsp</result>

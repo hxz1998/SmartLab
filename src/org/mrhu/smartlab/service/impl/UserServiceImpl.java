@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean save(User user) {
         try{
-            userDao.saveUser(user);
+            userDao.save(user);
             return true;
         } catch(Exception e) {
             e.printStackTrace();
@@ -36,18 +36,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User get(User exampleUser) {
-        return userDao.loadUser(exampleUser);
+        return userDao.load(exampleUser);
     }
 
     @Override
     public User get(String username) {
-        return userDao.loadUserByUserName(username);
+        return userDao.loadByUserName(username);
     }
 
     @Override
     public boolean delete(User user) {
         try {
-            userDao.deleteUser(user);
+            userDao.delete(user);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -57,12 +57,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User update(User user) {
-        return userDao.updateUser(user);
+        return userDao.update(user);
     }
 
     @Override
     public boolean exist(User user) {
-        User loadUser = userDao.loadUser(user);
+        User loadUser = userDao.load(user);
         if(loadUser != null) {
             return true;
         } else {

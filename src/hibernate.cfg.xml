@@ -28,7 +28,14 @@
   
     <!-- Drop and re-create the database schema on startup -->
   
-      <property name="hbm2ddl.auto">update</property>
-      <mapping class="org.mrhu.smartlab.model.User"/>
+    <property name="hbm2ddl.auto">update</property>
+    <mapping class="org.mrhu.smartlab.model.User"/>
+    <mapping class="org.mrhu.smartlab.model.Project"/>
+    <mapping class="org.mrhu.smartlab.model.Contest"/>
+    <mapping class="org.mrhu.smartlab.model.Honor"/>
+    <mapping class="org.mrhu.smartlab.model.Document"/>
+    <mapping class="org.mrhu.smartlab.model.News"/>
+    <mapping class="org.mrhu.smartlab.model.Report"/>
+    <mapping class="org.mrhu.smartlab.model.ProjectTimeline"/>
   </session-factory>
 </hibernate-configuration>

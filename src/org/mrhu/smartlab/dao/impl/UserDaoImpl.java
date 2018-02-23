@@ -14,17 +14,17 @@ public class UserDaoImpl implements UserDao {
     private HibernateTemplate hibernateTemplate;
 
     @Override
-    public void saveUser(User user) {
+    public void save(User user) {
         hibernateTemplate.save(user);
     }
 
     @Override
-    public void deleteUser(User user) {
+    public void delete(User user) {
         hibernateTemplate.delete(user);
     }
 
     @Override
-    public User updateUser(User user) {
+    public User update(User user) {
         if(user != null) {
             User beforeChange = hibernateTemplate.load(User.class, user.getId());
             hibernateTemplate.update(user);
@@ -35,7 +35,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User loadUserByUserName(String username) {
+    public User loadByUserName(String username) {
         List<User> users = (List<User>) hibernateTemplate.find("from User user where user.username = ?", username);
         if(users.size() == 1) {
             User loadUser = users.get(0);
@@ -46,7 +46,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User loadUser(User exampleUser) {
+    public User load(User exampleUser) {
         if(exampleUser != null) {
             User user = hibernateTemplate.get(User.class, exampleUser.getId());
             return user;

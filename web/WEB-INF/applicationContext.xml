@@ -54,7 +54,9 @@
     <tx:advice id="transactionInterceptor" transaction-manager="transactionManager">
         <tx:attributes>
             <tx:method name="exist" read-only="true"/>
-            <tx:method name="add*" propagation="REQUIRED"/>
+            <tx:method name="save" read-only="false"/>
         </tx:attributes>
     </tx:advice>
+    
+    <bean id="springContextUtil" class="org.mrhu.smartlab.util.SpringContextUtil"/>
 </beans>

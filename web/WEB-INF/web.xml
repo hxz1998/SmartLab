@@ -20,15 +20,25 @@
     </filter-mapping>
     
     <filter>
-        <filter-name>struts2</filter-name>
+        <filter-name>action</filter-name>
         <filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>struts2</filter-name>
-        <url-pattern>/*</url-pattern>
+        <filter-name>action</filter-name>
+        <url-pattern>*.action</url-pattern>
+    </filter-mapping>
+    
+    <filter>
+        <filter-name>jsp</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>jsp</filter-name>
+        <url-pattern>*.jsp</url-pattern>
     </filter-mapping>
     
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+    
 </web-app>
