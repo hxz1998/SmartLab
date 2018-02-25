@@ -3,6 +3,7 @@ package org.mrhu.smartlab.api.read;
 import com.alibaba.fastjson.JSON;
 import org.mrhu.smartlab.api.AbstractServlet;
 import org.mrhu.smartlab.service.NewsService;
+import org.mrhu.smartlab.util.ApiTemplateMethod;
 import org.mrhu.smartlab.util.SpringContextUtil;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
@@ -19,14 +20,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 
-@WebServlet(name = "getnewslist",
+@WebServlet(name = "getNewsList",
         urlPatterns = "/api/get/news/list"
 )
-public class getNewsList extends HttpServlet {
+public class GetNewsList extends HttpServlet {
 
     private static NewsService newsService;
 
-    public getNewsList() {
+    public GetNewsList() {
         super();
         newsService = (NewsService) SpringContextUtil.getBean("newsService");
     }
@@ -40,24 +41,15 @@ public class getNewsList extends HttpServlet {
     }
 
     /**
-     * 统一调用方法及结果处理
+     * * 统一调用方法及结果处理
      * @param request 传入的请求对象,
      *                从对象中获取请求的news对象参数
      * @param response 传入的响应对象
+     * @throws IOException 抛出输出流获取失败异常
+     * @throws ServletException 抛出servlet异常
      */
-    private void doProcess(HttpServletRequest request, HttpServletResponse response) throws IOException{
-        response.setContentType("text/json; charset=utf-8");
-        response.setCharacterEncoding("utf-8");
-        String json = JSON.toJSONString(newsService.getAllJson());
-        PrintWriter out = response.getWriter();
-        json = json.replace("\\", "");
-        StringBuilder stringBuilder = new StringBuilder(json);
-        json = stringBuilder.replace(0, 1, "").toString();
-        json = stringBuilder.replace(json.length() - 1, json.length(), "").toString();
-        System.out.println(json);
-        out.write(json);
-        out.flush();
-        out.close();
+    private void doProcess(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+        ApiTemplateMethod.write(request, response, newsService.getAllJson());
     }
 
 }

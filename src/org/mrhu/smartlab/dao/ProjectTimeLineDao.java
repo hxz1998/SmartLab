@@ -3,6 +3,8 @@ package org.mrhu.smartlab.dao;
 
 import org.mrhu.smartlab.model.ProjectTimeline;
 
+import java.util.List;
+
 public interface ProjectTimeLineDao {
 
     /**
@@ -30,4 +32,12 @@ public interface ProjectTimeLineDao {
      * @return 更新前的对象状态
      */
     ProjectTimeline update(ProjectTimeline projectTimeline);
+
+    /**
+     * 根据传入的projectID获取其下所有时间轴
+     * @param projectID 传入的projectID
+     * @return 返回指定的时间轴
+     */
+    List<ProjectTimeline> loadByProjectId(String projectID);
+
 }

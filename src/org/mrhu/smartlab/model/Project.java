@@ -16,6 +16,7 @@ public class Project {
     private User pmUser;
     private Date createDate;
     private Set<User> users = new HashSet<User>();
+    private int progress;
 
     @Id
     @GeneratedValue(generator = "uuid")
@@ -72,5 +73,14 @@ public class Project {
 
     public void setPmUser(User pmUser) {
         this.pmUser = pmUser;
+    }
+
+    @Column(name = "project_progress")
+    public int getProgress() {
+        return progress;
+    }
+
+    public void setProgress(int progress) {
+        this.progress = progress;
     }
 }

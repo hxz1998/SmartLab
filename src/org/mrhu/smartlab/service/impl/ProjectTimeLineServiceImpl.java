@@ -1,26 +1,50 @@
 package org.mrhu.smartlab.service.impl;
 
+import org.mrhu.smartlab.dao.ProjectTimeLineDao;
 import org.mrhu.smartlab.model.Project;
-import org.mrhu.smartlab.service.ProjectService;
+import org.mrhu.smartlab.model.ProjectTimeline;
+import org.mrhu.smartlab.service.ProjectTimeLineService;
+import org.springframework.stereotype.Component;
 
-public class ProjectTimeLineServiceImpl implements ProjectService {
-    @Override
-    public void save(Project project) {
+import javax.annotation.Resource;
+import java.util.List;
 
+@Component("projectTimeLine")
+public class ProjectTimeLineServiceImpl implements ProjectTimeLineService {
+
+    private ProjectTimeLineDao projectTimeLineDao;
+
+    public ProjectTimeLineDao getProjectTimeLineDao() {
+        return projectTimeLineDao;
+    }
+
+    @Resource
+    public void setProjectTimeLineDao(ProjectTimeLineDao projectTimeLineDao) {
+        this.projectTimeLineDao = projectTimeLineDao;
     }
 
     @Override
-    public Project get(Project exampleProject) {
-        return null;
+    public void save(ProjectTimeline projectTimeline) {
+        projectTimeLineDao.save(projectTimeline);
     }
 
     @Override
-    public void delete(Project project) {
-
+    public ProjectTimeline get(ProjectTimeline exampleProjectTimeline) {
+        return projectTimeLineDao.load(exampleProjectTimeline);
     }
 
     @Override
-    public Project update(Project project) {
-        return null;
+    public void delete(ProjectTimeline projectTimeline) {
+        projectTimeLineDao.delete(projectTimeline);
+    }
+
+    @Override
+    public ProjectTimeline update(ProjectTimeline projectTimeline) {
+        return projectTimeLineDao.update(projectTimeline);
+    }
+
+    @Override
+    public List<ProjectTimeline> getAll(Project project) {
+        return projectTimeLineDao.loadByProjectId(project.getId());
     }
 }

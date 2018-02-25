@@ -2,6 +2,8 @@ package org.mrhu.smartlab.dao;
 
 import org.mrhu.smartlab.model.Project;
 
+import java.util.List;
+
 public interface ProjectDao {
 
     /**
@@ -29,4 +31,10 @@ public interface ProjectDao {
      * @return 更新前的状态
      */
     Project update(Project project);
+
+    /**
+     * 获取当前储存的所有project对象
+     * @return 所有的project对象组成的列表
+     */
+    List<Project> getAll();
 }

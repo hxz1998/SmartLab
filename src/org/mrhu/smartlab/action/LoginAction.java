@@ -51,7 +51,6 @@ public class LoginAction extends ActionSupport implements ModelDriven<UserLoginD
                 session.put("name", name);
                 session.put("status", loadUser.getStatus());
                 return USER;
-
             } else if(loadUser.getPassword().equals(user.getPassword()) &&
                     loadUser.getUsername().equals(user.getUsername()) &&
                     loadUser.getStatus().equals(Status.ADMINISTRATOR)) {

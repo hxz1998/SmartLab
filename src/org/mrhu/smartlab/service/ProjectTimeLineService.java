@@ -1,7 +1,10 @@
 package org.mrhu.smartlab.service;
 
 
+import org.mrhu.smartlab.model.Project;
 import org.mrhu.smartlab.model.ProjectTimeline;
+
+import java.util.List;
 
 public interface ProjectTimeLineService {
 
@@ -30,4 +33,11 @@ public interface ProjectTimeLineService {
      * @return 更新前的对象状态
      */
     ProjectTimeline update(ProjectTimeline projectTimeline);
+
+    /**
+     * 获取指定project下面的全部时间线
+     * @param project 要获取的时间线的归属项目
+     * @return 时间线组成的list
+     */
+    List<ProjectTimeline> getAll(Project project);
 }
