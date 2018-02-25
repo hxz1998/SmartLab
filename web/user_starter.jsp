@@ -1,10 +1,16 @@
 <%--
   User: Mr.Hu
 --%>
-<%@ page contentType="text/html;charset=utf-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 <html>
+
 	<head>
+		<base href="<%=basePath%>" />
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>实验室综合管理系统</title>
@@ -148,7 +154,7 @@
 			<div class="content-wrapper">
 				<!-- Main content -->
 				<section class="content container-fluid">
-					<div class="box box-primary">
+					<div id="newsList" class="box box-primary">
 						<div class="box-header">
 							<h3 class="box-title">新闻列表</h3>
 							<div class="box-tools pull-right">
@@ -171,28 +177,12 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>SmartLab实验室管理系统开发开始进行</td>
-										<td>MR.HU</td>
-										<td>2018年2月21日20:36:52</td>
+									<tr v-for="item in news">
+										<td>{{item.title}}</td>
+										<td>{{item.pushUser}}</td>
+										<td>{{item.createDate}}</td>
 										<td>
-											<a href="#">查看</a>
-										</td>
-									</tr>
-									<tr>
-										<td>SmartLab实验室管理系统开发开始进行</td>
-										<td>MR.HU</td>
-										<td>2018年2月21日20:36:52</td>
-										<td>
-											<a href="#">查看</a>
-										</td>
-									</tr>
-									<tr>
-										<td>SmartLab实验室管理系统开发开始进行</td>
-										<td>MR.HU</td>
-										<td>2018年2月21日20:36:52</td>
-										<td>
-											<a href="#">查看</a>
+											<a v-bind:href="'user_news_detail.jsp?newsId=' + item.id">查看</a>
 										</td>
 									</tr>
 								</tbody>
@@ -212,9 +202,9 @@
 					<!--
 	        	作者：1466947023@qq.com
 	        	时间：2018-02-21
-	        	描述：项目任务表格
+	        	描述：项目任务表格,功能暂未开放
 	        -->
-					<div class="box">
+					<!--<div class="box">
 						<div class="box-header with-border">
 							<h3 class="box-title">任务列表</h3>
 							<div class="box-tools pull-right">
@@ -225,7 +215,6 @@
 								</ul>
 							</div>
 						</div>
-						<!-- /.box-header -->
 						<div class="box-body">
 							<table class="table table-bordered">
 								<tr>
@@ -273,8 +262,7 @@
 								</tr>
 							</table>
 						</div>
-					</div>
-					<!-- /.box -->
+					</div>-->
 
 					<!--
 	        	作者：1466947023@qq.com
@@ -388,15 +376,46 @@
 		<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<!-- AdminLTE App -->
 		<script src="dist/js/adminlte.min.js"></script>
-
+		<script type="text/javascript" src="js/plugins.js"></script>
+		<script type="text/javascript" src="js/vue.min.js"></script>
 		<script>
-			function initDate() {}
-			window.onload = initDate;
+			mui.init(
+				mui.ajax('http://localhost:8080/smartlab/api/get/news/list', {
+					type: 'post',
+					success: function(data) {
+						var oJson = JSON.parse(data);
+						var str = JSON.stringify(oJson.user);
+						vm.news = vm.news.concat(covert(oJson));
+					},
+					error: function(xhr, type, errorThrown) {
+						console.log(errorThrown);
+						console.log(type)
+					}
+				})
+			)
+
+			var vm = new Vue({
+				el: '#newsList',
+				data: {
+					news: [],
+					pushUser: []
+				}
+			})
+
+			function covert(items) {
+				var newItems = [];
+				items.forEach(function(item) {
+					newItems.push({
+						title: item.title,
+						createDate: item.createDate,
+						pushUser: item.user.name,
+						id: item.id
+					});
+				});
+				return newItems;
+			}
 		</script>
 
-		<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. -->
 	</body>
 
 </html>

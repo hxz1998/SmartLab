@@ -52,8 +52,8 @@ public class getNewsList extends HttpServlet {
         PrintWriter out = response.getWriter();
         json = json.replace("\\", "");
         StringBuilder stringBuilder = new StringBuilder(json);
-        json = stringBuilder.replace(0, 2, "").toString();
-        json = stringBuilder.replace(json.length() - 2, json.length(), "").toString();
+        json = stringBuilder.replace(0, 1, "").toString();
+        json = stringBuilder.replace(json.length() - 1, json.length(), "").toString();
         System.out.println(json);
         out.write(json);
         out.flush();

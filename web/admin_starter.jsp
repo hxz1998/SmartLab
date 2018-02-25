@@ -1,12 +1,16 @@
 <%--
   User: Mr.Hu
 --%>
-<%@ page contentType="text/html;charset=utf-8" language="java" %>
-<%@taglib uri="/struts-tags" prefix="s"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 <html>
 
 	<head>
+		<base href="<%=basePath%>"/>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>实验室综合管理系统</title>
@@ -165,7 +169,7 @@
 			<div class="content-wrapper">
 				<!-- Main content -->
 				<section class="content container-fluid">
-					<div class="box box-primary">
+					<div id="newsList" class="box box-primary">
 						<div class="box-header">
 							<h3 class="box-title">新闻列表</h3>
 							<div class="box-tools pull-right">
@@ -188,28 +192,12 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>SmartLab实验室管理系统开发开始进行</td>
-										<td>MR.HU</td>
-										<td>2018年2月21日20:36:52</td>
+									<tr v-for="item in news">
+										<td>{{item.title}}</td>
+										<td>{{item.pushUser}}</td>
+										<td>{{item.createDate}}</td>
 										<td>
-											<a href="#">查看</a>
-										</td>
-									</tr>
-									<tr>
-										<td>SmartLab实验室管理系统开发开始进行</td>
-										<td>MR.HU</td>
-										<td>2018年2月21日20:36:52</td>
-										<td>
-											<a href="#">查看</a>
-										</td>
-									</tr>
-									<tr>
-										<td>SmartLab实验室管理系统开发开始进行</td>
-										<td>MR.HU</td>
-										<td>2018年2月21日20:36:52</td>
-										<td>
-											<a href="#">查看</a>
+											<a v-bind:href="'admin_news_detail.jsp?newsId=' + item.id">查看</a>
 										</td>
 									</tr>
 								</tbody>
@@ -407,12 +395,44 @@
 		<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<!-- AdminLTE App -->
 		<script src="dist/js/adminlte.min.js"></script>
-
+		<script type="text/javascript" src="js/plugins.js"></script>
+		<script type="text/javascript" src="js/vue.min.js"></script>
 		<script>
-			function initDate() {}
-			window.onload = initDate;
-		</script>
+			mui.init(
+				mui.ajax('http://localhost:8080/smartlab/api/get/news/list', {
+					type: 'post',
+					success: function(data) {
+						var oJson = JSON.parse(data);
+						vm.news = vm.news.concat(covert(oJson));
+					},
+					error: function(xhr, type, errorThrown) {
+						console.log(errorThrown);
+						console.log(type)
+					}
+				})
+			);
 
+			var vm = new Vue({
+				el: '#newsList',
+				data: {
+					news: [],
+					pushUser: []
+				}
+			});
+
+			function covert(items) {
+				var newItems = [];
+				items.forEach(function(item) {
+					newItems.push({
+						title: item.title,
+						createDate: item.createDate,
+						pushUser: item.user.name,
+						id: item.id
+					});
+				});
+				return newItems;
+			}
+		</script>
 
 	</body>
 

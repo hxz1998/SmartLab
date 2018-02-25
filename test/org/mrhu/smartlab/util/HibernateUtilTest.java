@@ -65,19 +65,19 @@ public class HibernateUtilTest {
         session.beginTransaction();
 
         User user = new User();
-        user.setName("张三");
-        user.setContact("1466947023");
+        user.setName("王五");
+        user.setContact("23");
         user.setStatus(Status.ADMINISTRATOR);
-        user.setUsername("zhangsan");
+        user.setUsername("wangwu");
         user.setPassword("123");
         user.setStart(new Date());
         session.save(user);
 
         User user2 = new User();
-        user2.setName("李四");
+        user2.setName("马六");
         user2.setContact("47823974912");
         user2.setStatus(Status.USER);
-        user2.setUsername("lisi");
+        user2.setUsername("maliu");
         user2.setPassword("123");
         user2.setStart(new Date());
         session.save(user2);
