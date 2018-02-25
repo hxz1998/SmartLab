@@ -33,7 +33,7 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public News get(News exampleNews) {
-        return null;
+        return newsDao.load(exampleNews);
     }
 
     @Override

@@ -35,7 +35,7 @@
 			<!-- Main Header -->
 			<header class="main-header">
 				<!-- Logo -->
-				<a href="index2.html" class="logo">
+				<a href="login.jsp" class="logo">
 					<!-- mini logo for sidebar mini 50x50 pixels -->
 					<span class="logo-mini"><b>S</b>Lab</span>
 					<!-- logo for regular state and mobile devices -->
@@ -150,13 +150,13 @@
 				<section class="content container-fluid">
 					<div class="box primary">
 						<div class="box-header">
-							<div class="box-title">SmartLab实验室管理系统开发开始进行</div><hr />
-							<div class="box-info">编号：<a>JYN8-67KF-UYS9</a> </div>
-							<div class="box-info">发表人：<a>Mr.Hu</a></div>
-							<div class="box-info">发表时间：<a>2018年2月22日10:11:13</a></div>
+							<div class="box-title">${request.newsTitle}</div><hr />
+							<div class="box-info">编号：<a>${request.newsId}</a> </div>
+							<div class="box-info">发表人：<a>${request.pushUser}</a></div>
+							<div class="box-info">发表时间：<a>${request.createDate}</a></div>
 						</div>
 						<div class="box-body">
-							<p>这里是内容</p>
+							<p>${request.newsContent}</p>
 						</div>
 					</div>
 				</section>

@@ -79,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<!-- Menu Footer-->
 							<li class="user-footer">
 								<div class="pull-right">
-									<a href="#" class="btn btn-default btn-flat">登出</a>
+									<a href="logout" class="btn btn-default btn-flat">登出</a>
 								</div>
 							</li>
 							</ul>
@@ -197,7 +197,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<td>{{item.pushUser}}</td>
 										<td>{{item.createDate}}</td>
 										<td>
-											<a v-bind:href="'admin_news_detail.jsp?newsId=' + item.id">查看</a>
+											<a v-bind:href="'pullNewsDetail.action?newsId=' + item.id">查看</a>
 										</td>
 									</tr>
 								</tbody>

@@ -29,7 +29,8 @@ public class NewsDaoImpl implements NewsDao {
 
     @Override
     public News load(News exampleNews) {
-        return null;
+        News loadNews = hibernateTemplate.get(News.class, exampleNews.getId());
+        return loadNews;
     }
 
     @Override

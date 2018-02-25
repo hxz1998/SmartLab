@@ -182,7 +182,7 @@
 										<td>{{item.pushUser}}</td>
 										<td>{{item.createDate}}</td>
 										<td>
-											<a v-bind:href="'user_news_detail.jsp?newsId=' + item.id">查看</a>
+											<a v-bind:href="'pullNewsDetail.action?newsId=' + item.id">查看</a>
 										</td>
 									</tr>
 								</tbody>
