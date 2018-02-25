@@ -29,18 +29,26 @@ public class PullProjectAction extends ActionSupport implements RequestAware, Se
             Project project = new Project();
             project.setId(projectId);
             Project loadProject = projectService.get(project);
+
+            //页面头部信息栏
             request.put("projectInfo", loadProject.getInfo());
             request.put("projectId", loadProject.getId());
             request.put("projectContent", loadProject.getContent());
+
+            //时间轴信息栏
             request.put("timelines", projectTimeLineService.getAll(project));
             request.put("projectCreateDate", loadProject.getCreateDate());
+
+            //底部成员信息栏
             request.put("members", loadProject.getUsers());
+            request.put("", loadProject);
             if(session.get("status") == Status.ADMINISTRATOR) {
                 return "admin_success";
             } else {
                 return "user_success";
             }
         } catch (Exception e) {
+            e.printStackTrace();
             return ERROR;
         }
     }

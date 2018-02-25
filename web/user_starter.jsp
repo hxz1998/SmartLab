@@ -19,9 +19,6 @@
 		<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
 		<link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-		<!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-        page. However, you can choose any other skin. Make sure you
-        apply the skin class to the body tag so the changes take effect. -->
 		<link rel="stylesheet" href="dist/css/skins/skin-blue.css">
 
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -76,10 +73,9 @@
 									</li>
 
 							</li>
-							<!-- Menu Footer-->
 							<li class="user-footer">
 								<div class="pull-right">
-									<a href="logout" class="btn btn-default btn-flat">登出</a>
+									<a href="logout.action" class="btn btn-default btn-flat">登出</a>
 								</div>
 							</li>
 							</ul>

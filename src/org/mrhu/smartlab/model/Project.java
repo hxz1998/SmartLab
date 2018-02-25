@@ -53,7 +53,7 @@ public class Project {
         this.createDate = createDate;
     }
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="user_has_project",
         joinColumns = {@JoinColumn(name="project_id")},
         inverseJoinColumns = {@JoinColumn(name = "user_id")}
