@@ -40,4 +40,11 @@ public interface ProjectTimeLineService {
      * @return 时间线组成的list
      */
     List<ProjectTimeline> getAll(Project project);
+
+    /**
+     * 获取所有时间线组成的json表达式
+     * @param project 指定的project对象
+     * @return json表达式
+     */
+    String getAllToJson(Project project);
 }

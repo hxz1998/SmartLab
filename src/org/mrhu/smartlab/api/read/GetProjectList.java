@@ -41,6 +41,7 @@ public class GetProjectList extends HttpServlet {
      * @throws ServletException 抛出servlet异常
      */
     private void doProcess(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+        System.out.println(projectService.getAllJson());
         ApiTemplateMethod.write(request, response, projectService.getAllJson());
     }
 }

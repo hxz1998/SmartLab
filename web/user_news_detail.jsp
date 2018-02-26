@@ -58,32 +58,30 @@
 									<!-- The user image in the navbar-->
 									<img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
 									<!-- hidden-xs hides the username on small devices so only the image appears. -->
-									<span class="hidden-xs">Mr.Hu</span>
+									<span class="hidden-xs">${session.name}</span>
 								</a>
 								<ul class="dropdown-menu">
 									<!-- The user image in the menu -->
 									<li class="user-header">
 										<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 										<p>
-											Mr.Hu - WebApplication Developer
-											<small>Member since Nov. 2016</small>
+											用户名：<span>${session.username}</span><br />
+											<small>权限：${session.status}</small>
 										</p>
 									</li>
-
-							</li>
-							<!-- Menu Footer-->
-							<li class="user-footer">
-								<div class="pull-right">
-									<a href="#" class="btn btn-default btn-flat">登出</a>
-								</div>
-							</li>
-							</ul>
+									<!-- Menu Footer-->
+									<li class="user-footer">
+										<div class="pull-right">
+											<a href="logout.action" class="btn btn-default btn-flat">登出</a>
+										</div>
+									</li>
+								</ul>
 							</li>
 						</ul>
 					</div>
 				</nav>
 			</header>
-				<aside class="main-sidebar">
+			<aside class="main-sidebar">
 
 				<!-- sidebar: style can be found in sidebar.less -->
 				<section class="sidebar">
@@ -94,7 +92,7 @@
 							<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 						</div>
 						<div class="pull-left info">
-							<p>Mr.Hu</p>
+							<p>${session.name}</p>
 							<!-- Status -->
 							<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 						</div>
@@ -150,10 +148,17 @@
 				<section class="content container-fluid">
 					<div class="box primary">
 						<div class="box-header">
-							<div class="box-title">${request.newsTitle}</div><hr />
-							<div class="box-info">编号：<a>${request.newsId}</a> </div>
-							<div class="box-info">发表人：<a>${request.pushUser}</a></div>
-							<div class="box-info">发表时间：<a>${request.createDate}</a></div>
+							<div class="box-title">${request.newsTitle}</div>
+							<hr />
+							<div class="box-info">编号：
+								<a>${request.newsId}</a>
+							</div>
+							<div class="box-info">发表人：
+								<a>${request.pushUser}</a>
+							</div>
+							<div class="box-info">发表时间：
+								<a>${request.createDate}</a>
+							</div>
 						</div>
 						<div class="box-body">
 							<p>${request.newsContent}</p>
@@ -188,6 +193,7 @@
 		<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<!-- AdminLTE App -->
 		<script src="dist/js/adminlte.min.js"></script>
+		<script src="js/plugins.js"></script>
 
 		<script>
 			function initDate() {}

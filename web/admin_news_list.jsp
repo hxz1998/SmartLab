@@ -1,11 +1,16 @@
 <%--
   User: Mr.Hu
 --%>
-<%@ page contentType="text/html;charset=utf-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 <html>
 
 	<head>
+		<base href="<%=basePath%>" />
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>实验室综合管理系统</title>
@@ -14,9 +19,6 @@
 		<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
 		<link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-		<!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-        page. However, you can choose any other skin. Make sure you
-        apply the skin class to the body tag so the changes take effect. -->
 		<link rel="stylesheet" href="dist/css/skins/skin-blue.css">
 
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -58,26 +60,24 @@
 									<!-- The user image in the navbar-->
 									<img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
 									<!-- hidden-xs hides the username on small devices so only the image appears. -->
-									<span class="hidden-xs">Mr.Hu</span>
+									<span class="hidden-xs">${session.name}</span>
 								</a>
 								<ul class="dropdown-menu">
 									<!-- The user image in the menu -->
 									<li class="user-header">
 										<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 										<p>
-											Mr.Hu - WebApplication Developer
-											<small>Member since Nov. 2016</small>
+											用户名：<span>${session.username}</span><br />
+											<small>权限：${session.status}</small>
 										</p>
 									</li>
-
-							</li>
-							<!-- Menu Footer-->
-							<li class="user-footer">
-								<div class="pull-right">
-									<a href="#" class="btn btn-default btn-flat">登出</a>
-								</div>
-							</li>
-							</ul>
+									<!-- Menu Footer-->
+									<li class="user-footer">
+										<div class="pull-right">
+											<a href="logout.action" class="btn btn-default btn-flat">登出</a>
+										</div>
+									</li>
+								</ul>
 							</li>
 						</ul>
 					</div>
@@ -95,7 +95,7 @@
 							<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 						</div>
 						<div class="pull-left info">
-							<p>Mr.Hu</p>
+							<p>${session.name}</p>
 							<!-- Status -->
 							<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 						</div>
@@ -164,7 +164,7 @@
 			<div class="content-wrapper">
 				<!-- Main content -->
 				<section class="content container-fluid">
-					<div class="box box-primary">
+					<div id="newsList" class="box box-primary">
 						<div class="box-header">
 							<h3 class="box-title">新闻列表</h3>
 						</div>
@@ -174,99 +174,24 @@
 								<thead>
 									<tr>
 										<th>名称</th>
-										<th>编号</th>
 										<th>发表人</th>
 										<th>时间</th>
 										<th>详情</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>SmartLab实验室管理系统开发开始进行</td>
-										<td>JYN8-67KF-UYS9</td>
-										<td>MR.HU</td>
-										<td>2018年2月21日20:36:52</td>
+									<tr v-for="item in news">
+										<td>{{item.title}}</td>
+										<td>{{item.pushUser}}</td>
+										<td>{{item.createDate}}</td>
 										<td>
-											<a href="#">查看</a>
-										</td>
-									</tr>
-									<tr>
-										<td>SmartLab实验室管理系统开发开始进行</td>
-										<td>JYN8-67KF-UYS9</td>
-										<td>MR.HU</td>
-										<td>2018年2月21日20:36:52</td>
-										<td>
-											<a href="#">查看</a>
-										</td>
-									</tr>
-									<tr>
-										<td>SmartLab实验室管理系统开发开始进行</td>
-										<td>JYN8-67KF-UYS9</td>
-										<td>MR.HU</td>
-										<td>2018年2月21日20:36:52</td>
-										<td>
-											<a href="#">查看</a>
-										</td>
-									</tr>
-									<tr>
-										<td>SmartLab实验室管理系统开发开始进行</td>
-										<td>JYN8-67KF-UYS9</td>
-										<td>MR.HU</td>
-										<td>2018年2月21日20:36:52</td>
-										<td>
-											<a href="#">查看</a>
-										</td>
-									</tr>
-									<tr>
-										<td>SmartLab实验室管理系统开发开始进行</td>
-										<td>JYN8-67KF-UYS9</td>
-										<td>MR.HU</td>
-										<td>2018年2月21日20:36:52</td>
-										<td>
-											<a href="#">查看</a>
-										</td>
-									</tr>
-									<tr>
-										<td>SmartLab实验室管理系统开发开始进行</td>
-										<td>JYN8-67KF-UYS9</td>
-										<td>MR.HU</td>
-										<td>2018年2月21日20:36:52</td>
-										<td>
-											<a href="#">查看</a>
-										</td>
-									</tr>
-									<tr>
-										<td>SmartLab实验室管理系统开发开始进行</td>
-										<td>JYN8-67KF-UYS9</td>
-										<td>MR.HU</td>
-										<td>2018年2月21日20:36:52</td>
-										<td>
-											<a href="#">查看</a>
-										</td>
-									</tr>
-									<tr>
-										<td>SmartLab实验室管理系统开发开始进行</td>
-										<td>JYN8-67KF-UYS9</td>
-										<td>MR.HU</td>
-										<td>2018年2月21日20:36:52</td>
-										<td>
-											<a href="#">查看</a>
-										</td>
-									</tr>
-									<tr>
-										<td>SmartLab实验室管理系统开发开始进行</td>
-										<td>JYN8-67KF-UYS9</td>
-										<td>MR.HU</td>
-										<td>2018年2月21日20:36:52</td>
-										<td>
-											<a href="#">查看</a>
+											<a v-bind:href="'pullNewsDetail.action?newsId=' + item.id">查看</a>
 										</td>
 									</tr>
 								</tbody>
 								<tfoot>
 									<tr>
 										<th>名称</th>
-										<th>编号</th>
 										<th>发表人</th>
 										<th>时间</th>
 										<th>详情</th>
@@ -276,7 +201,6 @@
 						</div>
 						<!-- /.box-body -->
 					</div>
-					<!-- /.box -->
 				</section>
 				<!-- /.content -->
 			</div>
@@ -289,7 +213,7 @@
 					任何你想到的
 				</div>
 				<!-- Default to the left -->
-				<strong>Copyright &copy; 2018 <a href="https://github.com/MonkeyAndDog/">Mr.Hu</a>.</strong> All rights reserved.
+				<strong>Copyright &copy; 2018 <a href="#">Mr.Hu</a>.</strong> All rights reserved.
 			</footer>
 
 			<!-- Add the sidebar's background. This div must be placed
@@ -298,23 +222,53 @@
 		</div>
 		<!-- ./wrapper -->
 
-		<!-- REQUIRED JS SCRIPTS -->
-
-		<!-- jQuery 3 -->
 		<script src="bower_components/jquery/dist/jquery.min.js"></script>
-		<!-- Bootstrap 3.3.7 -->
 		<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-		<!-- AdminLTE App -->
 		<script src="dist/js/adminlte.min.js"></script>
-
+		<script src="js/mui.min.js"></script>
+		<script src="js/vue.min.js"></script>
 		<script>
-			function initDate() {}
-			window.onload = initDate;
-		</script>
+			mui.init(
+				initData()
+			)
 
-		<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. -->
+			function initData() {
+				/**
+				 *初始化新闻列表 
+				 */
+				mui.ajax('http://localhost:8080/smartlab/api/get/news/list', {
+					type: 'post',
+					success: function(data) {
+						var oJson = JSON.parse(data);
+						news.news = news.news.concat(covertNews(oJson));
+					},
+					error: function(xhr, type, errorThrown) {
+						console.log(errorThrown);
+						console.log(type)
+					}
+				})
+			}
+
+			var news = new Vue({
+				el: '#newsList',
+				data: {
+					news: []
+				}
+			})
+
+			function covertNews(items) {
+				var newItems = [];
+				items.forEach(function(item) {
+					newItems.push({
+						title: item.title,
+						createDate: item.createDate,
+						pushUser: item.user.name,
+						id: item.id
+					});
+				});
+				return newItems;
+			}
+		</script>
 	</body>
 
 </html>

@@ -1,5 +1,7 @@
 package org.mrhu.smartlab.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import org.mrhu.smartlab.dao.ProjectTimeLineDao;
 import org.mrhu.smartlab.model.Project;
 import org.mrhu.smartlab.model.ProjectTimeline;
@@ -9,7 +11,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import java.util.List;
 
-@Component("projectTimeLine")
+@Component("projectTimeLineService")
 public class ProjectTimeLineServiceImpl implements ProjectTimeLineService {
 
     private ProjectTimeLineDao projectTimeLineDao;
@@ -46,5 +48,10 @@ public class ProjectTimeLineServiceImpl implements ProjectTimeLineService {
     @Override
     public List<ProjectTimeline> getAll(Project project) {
         return projectTimeLineDao.loadByProjectId(project.getId());
+    }
+
+    @Override
+    public String getAllToJson(Project project) {
+        return JSON.toJSONStringWithDateFormat(getAll(project), "yyyy-MM-dd HH:mm:ss", SerializerFeature.DisableCircularReferenceDetect);
     }
 }

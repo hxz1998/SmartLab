@@ -38,7 +38,7 @@ public class PullProjectAction extends ActionSupport implements RequestAware, Se
             request.put("projectContent", loadProject.getContent());
 
             //时间轴信息栏
-            request.put("timelines", projectTimeLineService.getAll(project));
+            request.put("timelines", projectTimeLineService.getAllToJson(project));
             request.put("projectCreateDate", loadProject.getCreateDate());
 
             //底部成员信息栏

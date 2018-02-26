@@ -26,7 +26,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	  <![endif]-->
-
 		<!-- Google Font -->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 	</head>
@@ -164,115 +163,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="content-wrapper">
 				<!-- Main content -->
 				<section class="content container-fluid">
-					<div id="newsList" class="box box-primary">
-						<div class="box-header">
-							<h3 class="box-title">新闻列表</h3>
-							<div class="box-tools pull-right">
-								<ul class="pagination pagination-sm inline">
-									<li>
-										<a href="admin_news_list.jsp">更多 &nbsp; &nbsp;&raquo;</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<!-- /.box-header -->
-						<div class="box-body">
-							<table class="table table-bordered table-hover">
-								<thead>
-									<tr>
-										<th>名称</th>
-										<th>发表人</th>
-										<th>时间</th>
-										<th>详情</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr v-for="item in news">
-										<td>{{item.title}}</td>
-										<td>{{item.pushUser}}</td>
-										<td>{{item.createDate}}</td>
-										<td>
-											<a v-bind:href="'pullNewsDetail.action?newsId=' + item.id">查看</a>
-										</td>
-									</tr>
-								</tbody>
-								<tfoot>
-									<tr>
-										<th>名称</th>
-										<th>发表人</th>
-										<th>时间</th>
-										<th>详情</th>
-									</tr>
-								</tfoot>
-							</table>
-						</div>
-						<!-- /.box-body -->
-					</div>
-					<!--
-	        	作者：1466947023@qq.com
-	        	时间：2018-02-21
-	        	描述：项目任务表格
-	        -->
-					<!--<div class="box">
-						<div class="box-header with-border">
-							<h3 class="box-title">任务列表</h3>
-							<div class="box-tools pull-right">
-								<ul class="pagination pagination-sm inline">
-									<li>
-										<a href="#">更多 &nbsp; &nbsp;&raquo;</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="box-body">
-							<table class="table table-bordered">
-								<tr>
-									<th style="width: 10px"></th>
-									<th>任务</th>
-									<th>进度</th>
-									<th style="width: 150px">项目ID</th>
-								</tr>
-
-								<tr>
-									<td>1.</td>
-									<td>升级软件</td>
-									<td>
-										<div class="progress progress-xs">
-											<div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-										</div>
-									</td>
-									<td>
-										<a href="#">JYN8-67KF-UYS9</a>
-									</td>
-								</tr>
-								<tr>
-									<td>3.</td>
-									<td>清除数据库</td>
-									<td>
-										<div class="progress progress-xs">
-											<div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
-										</div>
-									</td>
-									<td>
-										<a href="#">JYN8-67KF-UYS9</a>
-									</td>
-								</tr>
-								<tr>
-									<td>3.</td>
-									<td>修复BUG</td>
-									<td>
-										<div class="progress progress-xs progress-striped active">
-											<div class="progress-bar progress-bar-success" style="width: 90%"></div>
-										</div>
-									</td>
-									<td>
-										<a href="#">JYN8-67KF-UYS9</a>
-									</td>
-								</tr>
-							</table>
-						</div>
-					</div>-->
-					<!-- /.box -->
 
 					<!--
 	        	作者：1466947023@qq.com
@@ -282,13 +172,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="box">
 						<div class="box-header">
 							<h3 class="box-title">项目列表</h3>
-							<div class="box-tools pull-right">
-								<ul class="pagination pagination-sm inline">
-									<li>
-										<a href="admin_project_list.jsp">更多 &nbsp; &nbsp;&raquo;</a>
-									</li>
-								</ul>
-							</div>
 						</div>
 						<!-- /.box-header -->
 						<div id="project" class="box-body">
@@ -345,8 +228,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<!-- Default to the left -->
 				<strong>Copyright &copy; 2018 <a href="https://github.com/MonkeyAndDog/">Mr.Hu</a>.</strong> All rights reserved.
 			</footer>
-			<!-- Add the sidebar's background. This div must be placed
-  immediately after the control sidebar -->
 			<div class="control-sidebar-bg"></div>
 		</div>
 		<!-- ./wrapper -->
@@ -359,29 +240,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<!-- AdminLTE App -->
 		<script src="dist/js/adminlte.min.js"></script>
-		<script type="text/javascript" src="js/plugins.js"></script>
-		<script type="text/javascript" src="js/vue.min.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script src="js/vue.min.js"></script>
 		<script>
 			mui.init(
 				initData()
 			)
 
 			function initData() {
-				/**
-				 *初始化新闻列表 
-				 */
-				mui.ajax('http://localhost:8080/smartlab/api/get/news/list', {
-					type: 'post',
-					success: function(data) {
-						var oJson = JSON.parse(data);
-						news.news = news.news.concat(covertNews(oJson));
-					},
-					error: function(xhr, type, errorThrown) {
-						console.log(errorThrown);
-						console.log(type)
-					}
-				})
-
 				/**
 				 *初始化项目列表 
 				 */
@@ -394,32 +260,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				})
 			}
 
-			var news = new Vue({
-				el: '#newsList',
-				data: {
-					news: []
-				}
-			})
-
 			var projects = new Vue({
 				el: '#project',
 				data: {
 					projects: []
 				}
 			})
-
-			function covertNews(items) {
-				var newItems = [];
-				items.forEach(function(item) {
-					newItems.push({
-						title: item.title,
-						createDate: item.createDate,
-						pushUser: item.user.name,
-						id: item.id
-					});
-				});
-				return newItems;
-			}
 
 			function covertProject(items) {
 				var newItems = [];

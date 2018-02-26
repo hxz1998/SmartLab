@@ -67,18 +67,16 @@
 									<li class="user-header">
 										<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 										<p>
-											Mr.Hu - WebApplication Developer
-											<small>Member since Nov. 2016</small>
+											用户名：<span>${session.username}</span><br />
+											<small>权限：${session.status}</small>
 										</p>
 									</li>
-
-							</li>
-							<li class="user-footer">
-								<div class="pull-right">
-									<a href="logout.action" class="btn btn-default btn-flat">登出</a>
-								</div>
-							</li>
-							</ul>
+									<li class="user-footer">
+										<div class="pull-right">
+											<a href="logout.action" class="btn btn-default btn-flat">登出</a>
+										</div>
+									</li>
+								</ul>
 							</li>
 						</ul>
 					</div>
@@ -128,7 +126,7 @@
 							</ul>
 						</li>
 						<li>
-							<a href="#"><i class="fa fa-bullhorn"></i> <span>新闻</span></a>
+							<a href="user_news_list.jsp"><i class="fa fa-bullhorn"></i> <span>新闻</span></a>
 						</li>
 						<li>
 							<a href="#"><i class="fa fa-adjust"></i> <span>设备预约</span></a>
@@ -277,7 +275,7 @@
 							</div>
 						</div>
 						<!-- /.box-header -->
-						<div class="box-body">
+						<div id="project" class="box-body">
 							<table class="table table-bordered table-hover">
 								<thead>
 									<tr>
@@ -289,43 +287,17 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>SmartLab实验室管理系统开发</td>
-										<td>JYN8-67KF-UYS9</td>
-										<td>MR.HU</td>
+									<tr v-for="item in projects">
+										<td>{{item.info}}</td>
+										<td>{{item.id}}</td>
+										<td>{{item.pm}}</td>
 										<td>
 											<div class="progress progress-xs progress-striped active">
-												<div class="progress-bar progress-bar-success" style="width: 90%"></div>
+												<div class="progress-bar progress-bar-success" v-bind:style="'width:' + item.progress + '%'"></div>
 											</div>
 										</td>
 										<td>
-											<a href="user_project_details.jsp?projectId=JYN8-67KF-UYS9">查看</a>
-										</td>
-									</tr>
-									<tr>
-										<td>SmartLab实验室管理系统开发</td>
-										<td>JYN8-67KF-UYS9</td>
-										<td>MR.HU</td>
-										<td>
-											<div class="progress progress-xs progress-striped active">
-												<div class="progress-bar progress-bar-success" style="width: 90%"></div>
-											</div>
-										</td>
-										<td>
-											<a href="#">查看</a>
-										</td>
-									</tr>
-									<tr>
-										<td>SmartLab实验室管理系统开发</td>
-										<td>JYN8-67KF-UYS9</td>
-										<td>MR.HU</td>
-										<td>
-											<div class="progress progress-xs progress-striped active">
-												<div class="progress-bar progress-bar-success" style="width: 90%"></div>
-											</div>
-										</td>
-										<td>
-											<a href="#">查看</a>
+											<a v-bind:href="'pullProjectDetail.action?projectId=' + item.id">查看</a>
 										</td>
 									</tr>
 								</tbody>
@@ -376,29 +348,52 @@
 		<script type="text/javascript" src="js/vue.min.js"></script>
 		<script>
 			mui.init(
+				initData()
+			)
+
+			function initData() {
+				/**
+				 *初始化新闻列表 
+				 */
 				mui.ajax('http://localhost:8080/smartlab/api/get/news/list', {
 					type: 'post',
 					success: function(data) {
 						var oJson = JSON.parse(data);
-						var str = JSON.stringify(oJson.user);
-						vm.news = vm.news.concat(covert(oJson));
+						news.news = news.news.concat(covertNews(oJson));
 					},
 					error: function(xhr, type, errorThrown) {
 						console.log(errorThrown);
 						console.log(type)
 					}
 				})
-			)
 
-			var vm = new Vue({
+				/**
+				 *初始化项目列表 
+				 */
+				mui.ajax('http://localhost:8080/smartlab/api/get/project/list', {
+					type: 'post',
+					success: function(data) {
+						var oJson = JSON.parse(data);
+						projects.projects = projects.projects.concat(covertProject(oJson));
+					}
+				})
+			}
+
+			var news = new Vue({
 				el: '#newsList',
 				data: {
-					news: [],
-					pushUser: []
+					news: []
 				}
 			})
-
-			function covert(items) {
+		
+			var projects = new Vue({
+				el: '#project',
+				data: {
+					projects: []
+				}
+			})
+		
+			function covertNews(items) {
 				var newItems = [];
 				items.forEach(function(item) {
 					newItems.push({
@@ -406,6 +401,19 @@
 						createDate: item.createDate,
 						pushUser: item.user.name,
 						id: item.id
+					});
+				});
+				return newItems;
+			}
+
+			function covertProject(items) {
+				var newItems = [];
+				items.forEach(function(item) {
+					newItems.push({
+						info: item.content,
+						id: item.id,
+						pm: item.pmUser.name,
+						progress: item.progress
 					});
 				});
 				return newItems;

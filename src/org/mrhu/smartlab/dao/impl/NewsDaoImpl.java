@@ -45,7 +45,8 @@ public class NewsDaoImpl implements NewsDao {
 
     @Override
     public List<News> getAll() {
-        List<News> allNews = hibernateTemplate.loadAll(News.class);
+//        List<News> allNews = hibernateTemplate.loadAll(News.class);
+        List<News> allNews = (List<News>) hibernateTemplate.find("from News news");
         return allNews;
     }
 }

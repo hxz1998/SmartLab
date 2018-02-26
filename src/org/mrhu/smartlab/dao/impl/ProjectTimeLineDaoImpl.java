@@ -46,7 +46,7 @@ public class ProjectTimeLineDaoImpl implements ProjectTimeLineDao{
 
     @Override
     public List<ProjectTimeline> loadByProjectId(String projectID) {
-        List<ProjectTimeline> projectTimelines = (List<ProjectTimeline>) hibernateTemplate.find("from ProjectTimeline p where p.project.id = ?", projectID);
+        List<ProjectTimeline> projectTimelines = (List<ProjectTimeline>) hibernateTemplate.find("from ProjectTimeline p where p.project.id = ? order by p.id desc", projectID);
         return projectTimelines;
     }
 }

@@ -37,7 +37,8 @@ public class ProjectDaoImpl implements ProjectDao {
 
     @Override
     public List<Project> getAll() {
-        return hibernateTemplate.loadAll(Project.class);
+//        return hibernateTemplate.loadAll(Project.class);
+        return (List<Project>) hibernateTemplate.find("from Project project");
     }
 
     public HibernateTemplate getHibernateTemplate() {

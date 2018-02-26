@@ -1,6 +1,7 @@
 package org.mrhu.smartlab.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import org.mrhu.smartlab.dao.ProjectDao;
 import org.mrhu.smartlab.model.Project;
 import org.mrhu.smartlab.service.ProjectService;
@@ -58,12 +59,12 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public String getAllJson() {
-        return JSON.toJSONStringWithDateFormat(getAll(), "yyyy-MM-dd HH:mm:ss");
+        return JSON.toJSONStringWithDateFormat(getAll(), "yyyy-MM-dd HH:mm:ss", SerializerFeature.DisableCircularReferenceDetect);
     }
 
     @Override
     public String getJson(Project project) {
-        return JSON.toJSONStringWithDateFormat(get(project), "yyyy-MM-dd HH:mm:ss");
+        return JSON.toJSONStringWithDateFormat(get(project), "yyyy-MM-dd HH:mm:ss", SerializerFeature.DisableCircularReferenceDetect);
     }
 
 }

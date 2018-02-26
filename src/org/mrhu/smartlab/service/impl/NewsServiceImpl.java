@@ -55,7 +55,7 @@ public class NewsServiceImpl implements NewsService {
     @Override
     public String getAllJson() {
         List<News> allNews = newsDao.getAll();
-        return JSON.toJSONStringWithDateFormat(allNews, "yyyy-MM-dd HH:mm:ss");
+        return JSON.toJSONStringWithDateFormat(allNews, "yyyy-MM-dd HH:mm:ss", SerializerFeature.DisableCircularReferenceDetect);
     }
 
 

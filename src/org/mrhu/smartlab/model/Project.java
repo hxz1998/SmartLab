@@ -1,5 +1,6 @@
 package org.mrhu.smartlab.model;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;

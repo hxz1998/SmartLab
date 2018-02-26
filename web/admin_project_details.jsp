@@ -1,12 +1,16 @@
 <%--
   User: Mr.Hu
 --%>
-<%@ page contentType="text/html;charset=utf-8" language="java" %>
-<%@taglib uri="/struts-tags" prefix="s"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 <html>
 
 	<head>
+		<base href="<%=basePath%>" />
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>实验室综合管理系统</title>
@@ -15,9 +19,6 @@
 		<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
 		<link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-		<!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-        page. However, you can choose any other skin. Make sure you
-        apply the skin class to the body tag so the changes take effect. -->
 		<link rel="stylesheet" href="dist/css/skins/skin-blue.css">
 
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -52,108 +53,6 @@
 					<!-- Navbar Right Menu -->
 					<div class="navbar-custom-menu">
 						<ul class="nav navbar-nav">
-							<!-- Messages: style can be found in dropdown.less-->
-							<li class="dropdown messages-menu">
-								<!-- Menu toggle button -->
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									<i class="fa fa-envelope-o"></i>
-									<span class="label label-success">4</span>
-								</a>
-								<ul class="dropdown-menu">
-									<li class="header">你有4条消息</li>
-									<li>
-										<!-- inner menu: contains the messages -->
-										<ul class="menu">
-											<li>
-												<!-- start message -->
-												<a href="#">
-													<div class="pull-left">
-														<!-- User Image -->
-														<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-													</div>
-													<!-- Message title and timestamp -->
-													<h4>
-                        Support Team
-                        <small><i class="fa fa-clock-o"></i> 5 分钟以前</small>
-                      </h4>
-													<!-- The message -->
-													<p>SmartLab是什么系统？</p>
-												</a>
-											</li>
-											<!-- end message -->
-										</ul>
-										<!-- /.menu -->
-									</li>
-									<li class="footer">
-										<a href="#">查看所有消息</a>
-									</li>
-								</ul>
-							</li>
-							<!-- /.messages-menu -->
-
-							<!-- Notifications Menu -->
-							<li class="dropdown notifications-menu">
-								<!-- Menu toggle button -->
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									<i class="fa fa-bell-o"></i>
-									<span class="label label-warning">10</span>
-								</a>
-								<ul class="dropdown-menu">
-									<li class="header">你有10条提示</li>
-									<li>
-										<!-- Inner Menu: contains the notifications -->
-										<ul class="menu">
-											<li>
-												<!-- start notification -->
-												<a href="#">
-													<i class="fa fa-users text-aqua"></i> SSH整合完成
-												</a>
-											</li>
-											<!-- end notification -->
-										</ul>
-									</li>
-									<li class="footer">
-										<a href="#">查看所有</a>
-									</li>
-								</ul>
-							</li>
-							<!-- Tasks Menu -->
-							<li class="dropdown tasks-menu">
-								<!-- Menu Toggle Button -->
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									<i class="fa fa-flag-o"></i>
-									<span class="label label-danger">9</span>
-								</a>
-								<ul class="dropdown-menu">
-									<li class="header">你有1个任务</li>
-									<li>
-										<!-- Inner menu: contains the tasks -->
-										<ul class="menu">
-											<li>
-												<!-- Task item -->
-												<a href="#">
-													<!-- Task title and progress text -->
-													<h3>
-                        	设计模式
-                        <small class="pull-right">20%</small>
-                      </h3>
-													<!-- The progress bar -->
-													<div class="progress xs">
-														<!-- Change the css width attribute to simulate progress -->
-														<div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-															<span class="sr-only">进度：20%</span>
-														</div>
-													</div>
-												</a>
-											</li>
-											<!-- end task item -->
-										</ul>
-									</li>
-									<li class="footer">
-										<a href="#">查看所有任务</a>
-									</li>
-								</ul>
-							</li>
 							<!-- User Account Menu -->
 							<li class="dropdown user user-menu">
 								<!-- Menu Toggle Button -->
@@ -168,19 +67,17 @@
 									<li class="user-header">
 										<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 										<p>
-											Mr.Hu - WebApplication Developer
-											<small>Member since Nov. 2016</small>
+											用户名：<span>${session.username}</span><br />
+											<small>权限：${session.status}</small>
 										</p>
 									</li>
-
-							</li>
-							<!-- Menu Footer-->
-							<li class="user-footer">
-								<div class="pull-right">
-									<a href="#" class="btn btn-default btn-flat">登出</a>
-								</div>
-							</li>
-							</ul>
+									<!-- Menu Footer-->
+									<li class="user-footer">
+										<div class="pull-right">
+											<a href="logout.action" class="btn btn-default btn-flat">登出</a>
+										</div>
+									</li>
+								</ul>
 							</li>
 						</ul>
 					</div>
@@ -233,13 +130,28 @@
 							<a href="#"><i class="fa fa-bullhorn"></i> <span>新闻</span></a>
 						</li>
 						<li>
-							<a href="#"><i class="fa fa-adjust"></i> <span>设备预约</span></a>
+							<a href="#"><i class="glyphicon glyphicon-user"></i> <span>人员管理</span></a>
 						</li>
 						<li>
-							<a href="#"><i class="fa fa-database"></i> <span>知识库</span></a>
+							<a href="#"><i class="glyphicon glyphicon-wrench"></i> <span>设备预约</span></a>
 						</li>
 						<li>
-							<a href="#"><i class="fa fa-comment"></i> <span>通知</span></a>
+							<a href="#"><i class="fa fa-calculator "></i> <span>设备管理</span></a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-bar-chart"></i> <span>比赛统计</span></a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-smile-o"></i> <span>荣誉系统</span></a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-database"></i> <span>工作简报</span></a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-file"></i> <span>文档管理</span></a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-calendar-o"></i> <span>知识库</span></a>
 						</li>
 
 					</ul>
@@ -253,49 +165,28 @@
 				<section class="content container-fluid">
 					<div class="box">
 						<div class="box-header">
-							SmartLab开发实验项目<hr><span class="text-center text-blue">编号</span>
+							${request.projectInfo}
+							<hr>编号:<span class="text-center text-blue">${request.projectId}</span>
 						</div>
 						<div class="box-body">
-							
-							于2018年2月19日启动，目标建立一个方便易用的开源实验室综合管理系统
+							${request.projectContent}
 						</div>
 					</div>
 					<div class="box">
 						<div class="box-header">
 							时间轴
 						</div>
-						<div class="box-body">
+						<div class="box-body" id="timeline">
 							<ul class="timeline">
-								<!-- timeline time label -->
-								<li class="time-label">
-									<span class="bg-red">2018年2月21日</span>
-								</li>
-								<!-- /.timeline-label -->
 								<!-- timeline item -->
-								<li>
+								<li v-for="item in items">
 									<!-- timeline icon -->
 									<i class="fa fa-adjust bg-blue"></i>
 									<div class="timeline-item">
-										<span class="time"><i class="fa fa-clock-o"></i>2018年2月21日21:44:38</span>
-										<h3 class="timeline-header"><a href="#">正在开发该页面</a></h3>
+										<span class="time"><i class="fa fa-clock-o"></i>{{item.createDate}}</span>
+										<h3 class="timeline-header"><a href="#">{{item.info}}</a></h3>
 										<div class="timeline-body">
-											开发该页面中
-										</div>
-										<div class="timeline-footer">
-											<a class="btn btn-primary btn-xs">修改</a>
-											<a class="btn btn-primary btn-xs">删除</a>
-										</div>
-									</div>
-								</li>
-								<!-- timeline item -->
-								<li>
-									<!-- timeline icon -->
-									<i class="fa fa-adjust bg-blue"></i>
-									<div class="timeline-item">
-										<span class="time"><i class="fa fa-clock-o"></i>2018年2月19日21:44:38</span>
-										<h3 class="timeline-header"><a href="#">正在开发该页面</a></h3>
-										<div class="timeline-body">
-											启动项目
+											{{item.content}}
 										</div>
 										<div class="timeline-footer">
 											<a class="btn btn-primary btn-xs">修改</a>
@@ -304,11 +195,16 @@
 									</div>
 								</li>
 								<!-- END timeline item -->
+								<!-- timeline time label -->
+								<li class="time-label">
+									<span class="bg-red">${request.projectCreateDate}</span>
+								</li>
+								<!-- /.timeline-label -->
 							</ul>
 						</div>
 					</div>
 
-					<div class="box">
+					<div class="box" id="memberList">
 						<div class="box-header">人员表</div>
 						<div class="box-body">
 							<table class="table table-bordered table-hover">
@@ -322,56 +218,15 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>Mr.Hu</td>
-										<td>原型设计</td>
-										<td>大二</td>
-										<td>2018年2月</td>
-										<td>tel</td>
+									<tr v-for="item in items">
+										<td>{{item.name}}</td>
+										<td>{{item.duty}}</td>
+										<td>{{item.startTime}}</td>
+										<td>{{item.contact}}</td>
+										<td>
+											<a href="#">移除</a>
+										</td>
 									</tr>
-									<tr>
-										<td>Mr.Hu</td>
-										<td>原型设计</td>
-										<td>大二</td>
-										<td>2018年2月</td>
-										<td>tel</td>
-									</tr>
-									<tr>
-										<td>Mr.Hu</td>
-										<td>原型设计</td>
-										<td>大二</td>
-										<td>2018年2月</td>
-										<td>tel</td>
-									</tr>
-									<tr>
-										<td>Mr.Hu</td>
-										<td>原型设计</td>
-										<td>大二</td>
-										<td>2018年2月</td>
-										<td>tel</td>
-									</tr>
-									<tr>
-										<td>Mr.Hu</td>
-										<td>原型设计</td>
-										<td>大二</td>
-										<td>2018年2月</td>
-										<td>tel</td>
-									</tr>
-									<tr>
-										<td>Mr.Hu</td>
-										<td>原型设计</td>
-										<td>大二</td>
-										<td>2018年2月</td>
-										<td>tel</td>
-									</tr>
-									<tr>
-										<td>Mr.Hu</td>
-										<td>原型设计</td>
-										<td>大二</td>
-										<td>2018年2月</td>
-										<td>tel</td>
-									</tr>
-								</tbody>
 							</table>
 						</div>
 					</div>
@@ -397,13 +252,9 @@
 				<strong>Copyright &copy; 2018 <a href="https://github.com/MonkeyAndDog/">Mr.Hu</a>.</strong> All rights reserved.
 			</footer>
 
-			<!-- Add the sidebar's background. This div must be placed
-  immediately after the control sidebar -->
 			<div class="control-sidebar-bg"></div>
 		</div>
 		<!-- ./wrapper -->
-
-		<!-- REQUIRED JS SCRIPTS -->
 
 		<!-- jQuery 3 -->
 		<script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -411,15 +262,33 @@
 		<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<!-- AdminLTE App -->
 		<script src="dist/js/adminlte.min.js"></script>
-
+		<script src="js/mui.min.js"></script>
+		<script src="js/vue.min.js"></script>
+		
 		<script>
-			function initDate() {}
-			window.onload = initDate;
-		</script>
+			mui.init(
+				initDate()
+			);
 
-		<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. -->
+			function initDate() {
+				var timeline = new Vue({
+					el: '#timeline',
+					data: {
+						items: []
+					}
+				});
+				timeline.items = ${request.timelines};
+
+				var memberList = new Vue({
+					el: '#memberList',
+					data: {
+						items: []
+					}
+				});
+				memberList.items = ${request.memberAndDuty};
+
+			}
+		</script>
 	</body>
 
 </html>
