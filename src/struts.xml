@@ -29,5 +29,10 @@
             <result name="user_success">/user_news_detail.jsp</result>
             <allowed-methods>getNewsDetail</allowed-methods>
         </action>
+        <action name="pullProjectDetail" class="org.mrhu.smartlab.action.PullProjectAction" method="getProjectDetail">
+            <result name="admin_success">/admin_project_details.jsp</result>
+            <result name="user_success">/user_project_details.jsp</result>
+            <allowed-methods>getProjectDetail</allowed-methods>
+        </action>
     </package>
 </struts>

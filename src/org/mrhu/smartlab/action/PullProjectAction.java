@@ -5,6 +5,7 @@ import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.mrhu.smartlab.model.Project;
 import org.mrhu.smartlab.model.Status;
+import org.mrhu.smartlab.service.ProjectMemberDutyService;
 import org.mrhu.smartlab.service.ProjectService;
 import org.mrhu.smartlab.service.ProjectTimeLineService;
 import org.springframework.context.annotation.Scope;
@@ -23,6 +24,7 @@ public class PullProjectAction extends ActionSupport implements RequestAware, Se
     private Map<String, Object> session;
     private Map<String, Object> request;
     private ProjectTimeLineService projectTimeLineService;
+    private ProjectMemberDutyService projectMemberDutyService;
 
     public String getProjectDetail() {
         try{
@@ -40,8 +42,8 @@ public class PullProjectAction extends ActionSupport implements RequestAware, Se
             request.put("projectCreateDate", loadProject.getCreateDate());
 
             //底部成员信息栏
-            request.put("members", loadProject.getUsers());
-            request.put("", loadProject);
+            request.put("memberAndDuty", projectMemberDutyService.getAllDetailToJson(loadProject));
+
             if(session.get("status") == Status.ADMINISTRATOR) {
                 return "admin_success";
             } else {
@@ -85,6 +87,15 @@ public class PullProjectAction extends ActionSupport implements RequestAware, Se
 
     public Map<String, Object> getRequest() {
         return request;
+    }
+
+    public ProjectMemberDutyService getProjectMemberDutyService() {
+        return projectMemberDutyService;
+    }
+
+    @Resource
+    public void setProjectMemberDutyService(ProjectMemberDutyService projectMemberDutyService) {
+        this.projectMemberDutyService = projectMemberDutyService;
     }
 
     @Override
