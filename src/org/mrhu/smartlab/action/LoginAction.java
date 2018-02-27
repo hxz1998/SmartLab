@@ -29,8 +29,8 @@ public class LoginAction extends ActionSupport implements ModelDriven<UserLoginD
 
     private Map<String, Object> session;
 
-
     /**
+     * 先判断当前会话中是否有用户身份存在
      * 判断指定用户名是否存在，
      *  存在---判断是否密码正确
      *      密码正确---判断用户身份
@@ -40,10 +40,33 @@ public class LoginAction extends ActionSupport implements ModelDriven<UserLoginD
      * @return 用户身份或者状态情况，同时设定登陆状态loginStatus;
      */
     public String login() {
-        User user = userLoginDto.getUser();
-        if (userService.get(user.getUsername()) != null) {
-            User loadUser = userService.get(user.getUsername());
-            if(loadUser.getPassword().equals(user.getPassword()) &&
+        if((session.get("username") != null) && (userLoginDto.getPassword() == null)) {
+            if(session.get("status") == Status.USER) {
+                return USER;
+            } else if (session.get("status") == Status.ADMINISTRATOR){
+                return ADMIN;
+            }
+        } else {
+            User user = userLoginDto.getUser();
+            if (userService.get(user.getUsername()) != null) {
+                User loadUser = userService.get(user.getUsername());
+
+                if(loadUser.getPassword().equals(user.getPassword()) &&
+                        loadUser.getUsername().equals(user.getUsername())) {
+                    name = loadUser.getName();
+                    session.put("username", loadUser.getUsername());
+                    session.put("name", name);
+                    session.put("status", loadUser.getStatus());
+                    if(loadUser.getStatus().equals(Status.USER)) {
+                        return USER;
+                    } else if (loadUser.getStatus().equals(Status.ADMINISTRATOR)) {
+                        return ADMIN;
+                    }
+                } else if (!loadUser.getPassword().equals(user.getPassword())){
+                    loginStatus="密码错误";
+                    return PASSWORD_ERROR;
+                }
+           /* if(loadUser.getPassword().equals(user.getPassword()) &&
                     loadUser.getUsername().equals(user.getUsername()) &&
                     loadUser.getStatus().equals(Status.USER)) {
                 name = loadUser.getName();
@@ -62,8 +85,10 @@ public class LoginAction extends ActionSupport implements ModelDriven<UserLoginD
             } else if ( !loadUser.getPassword().equals(user.getPassword())){
                 loginStatus="密码错误";
                 return PASSWORD_ERROR;
+            }*/
             }
         }
+
         loginStatus="用户不存在";
         return DO_NOT_EXIST;
     }

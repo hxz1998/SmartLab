@@ -34,9 +34,8 @@
 	<body class="hold-transition register-page">
 		<div class="register-box">
 			<div class="register-logo">
-				<a href="../../index2.html"><b>Smart</b>Lab</a>
+				<a href="login.jsp"><b>Smart</b>Lab</a>
 			</div>
-
 			<div class="register-box-body">
 				<p class="login-box-msg">注册新用户</p>
 				<p class="login-box-msg">${request.result}</p>

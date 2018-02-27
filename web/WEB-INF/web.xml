@@ -10,6 +10,8 @@
     <welcome-file-list>
         <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
+    
+    <!--api过滤器-->
     <filter>
         <filter-name>api</filter-name>
         <filter-class>org.mrhu.smartlab.filter.CrosFilter</filter-class>
@@ -19,6 +21,7 @@
         <url-pattern>/api/*</url-pattern>
     </filter-mapping>
     
+    <!--默认状态下的action-->
     <filter>
         <filter-name>action</filter-name>
         <filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
@@ -27,13 +30,22 @@
         <filter-name>action</filter-name>
         <url-pattern>*.action</url-pattern>
     </filter-mapping>
-    
     <filter>
-        <filter-name>jsp</filter-name>
+        <filter-name>listAction</filter-name>
         <filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>jsp</filter-name>
+        <filter-name>listAction</filter-name>
+        <url-pattern>*.list</url-pattern>
+    </filter-mapping>
+    
+    <!--防止用户直接访问jsp文件-->
+    <filter>
+        <filter-name>JSPFilter</filter-name>
+        <filter-class>org.mrhu.smartlab.filter.JSPFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>JSPFilter</filter-name>
         <url-pattern>*.jsp</url-pattern>
     </filter-mapping>
     

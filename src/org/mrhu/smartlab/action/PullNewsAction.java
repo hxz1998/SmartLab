@@ -3,6 +3,7 @@ package org.mrhu.smartlab.action;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
+import org.mrhu.smartlab.dispatcher.ActionRequestDispatcher;
 import org.mrhu.smartlab.model.News;
 import org.mrhu.smartlab.model.Status;
 import org.mrhu.smartlab.service.NewsService;
@@ -48,13 +49,8 @@ public class PullNewsAction extends ActionSupport implements RequestAware, Sessi
             request.put("pushUser", loadNews.getUser().getName());
             request.put("createDate", loadNews.getCreateDate());
             request.put("newsContent", loadNews.getContent());
-            if(session.get("status") == Status.USER) {
-                return "user_success";
-            } else if (session.get("status") == Status.ADMINISTRATOR){
-                return "admin_success";
-            } else {
-                return SUCCESS;
-            }
+
+            return ActionRequestDispatcher.dispatcher(session);
         } catch (Exception e) {
             e.printStackTrace();
             return ERROR;

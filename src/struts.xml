@@ -11,6 +11,10 @@
     <constant name="struts.i18n.encoding" value="UTF-8"/>
     
     <package name="default" extends="struts-default" >
+        <default-action-ref name="noSuchAction"></default-action-ref>
+        <action name="noSuchAction">
+            <result>/404.jsp</result>
+        </action>
         <action name="login" class="org.mrhu.smartlab.action.LoginAction" method="login">
             <result name="user_success">/user_starter.jsp</result>
             <result name="admin_success">/admin_starter.jsp</result>
@@ -33,11 +37,13 @@
         <action name="pullNewsDetail" class="org.mrhu.smartlab.action.PullNewsAction" method="getNewsDetail">
             <result name="admin_success">/admin_news_detail.jsp</result>
             <result name="user_success">/user_news_detail.jsp</result>
+            <result name="no_login">/login.jsp</result>
             <allowed-methods>getNewsDetail</allowed-methods>
         </action>
         <action name="pullProjectDetail" class="org.mrhu.smartlab.action.PullProjectAction" method="getProjectDetail">
             <result name="admin_success">/admin_project_details.jsp</result>
             <result name="user_success">/user_project_details.jsp</result>
+            <result name="no_login">/login.jsp</result>
             <allowed-methods>getProjectDetail</allowed-methods>
         </action>
     </package>

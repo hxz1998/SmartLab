@@ -8,7 +8,6 @@
 %>
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="utf-8">
 		<base href="<%= basePath %>" />
@@ -34,11 +33,10 @@
 
 	<body class="hold-transition skin-blue fixed sidebar-mini">
 		<div class="wrapper">
-
 			<!-- Main Header -->
 			<header class="main-header">
 				<!-- Logo -->
-				<a href="index2.html" class="logo">
+				<a href="login.jsp" class="logo">
 					<!-- mini logo for sidebar mini 50x50 pixels -->
 					<span class="logo-mini"><b>S</b>Lab</span>
 					<!-- logo for regular state and mobile devices -->

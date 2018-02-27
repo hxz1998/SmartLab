@@ -3,6 +3,7 @@ package org.mrhu.smartlab.action;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
+import org.mrhu.smartlab.dispatcher.ActionRequestDispatcher;
 import org.mrhu.smartlab.model.Project;
 import org.mrhu.smartlab.model.Status;
 import org.mrhu.smartlab.service.ProjectMemberDutyService;
@@ -44,11 +45,7 @@ public class PullProjectAction extends ActionSupport implements RequestAware, Se
             //底部成员信息栏
             request.put("memberAndDuty", projectMemberDutyService.getAllDetailToJson(loadProject));
 
-            if(session.get("status") == Status.ADMINISTRATOR) {
-                return "admin_success";
-            } else {
-                return "user_success";
-            }
+            return ActionRequestDispatcher.dispatcher(session);
         } catch (Exception e) {
             e.printStackTrace();
             return ERROR;

@@ -6,11 +6,13 @@ import org.mrhu.smartlab.model.User;
 import java.util.Date;
 
 public class RegistUserDto {
-    private String username;
-    private String password;
-    private String repPassword;
-    private String contact;
-    private String name;
+
+    //赋默认空值，防止空指针错误
+    private String username = "";
+    private String password = "";
+    private String repPassword = "";
+    private String contact = "";
+    private String name = "";
 
     private User user = new User();
 

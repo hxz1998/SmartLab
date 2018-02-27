@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.util.Date;
 import java.util.Map;
 
 @Component
@@ -24,8 +23,8 @@ public class RegistUserAction extends ActionSupport implements RequestAware, Mod
     private User user = new User();
 
     public String registUser() {
-        user.setUsername(registUserDto.getUsername());
 
+        user.setUsername(registUserDto.getUsername());
         if(registUserDto.getPassword().length() <= 5) {
             request.put("result", "密码长度不合格(6位及以上)");
             return ERROR;
