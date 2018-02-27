@@ -1,11 +1,16 @@
 <%--
   User: Mr.Hu
 --%>
-<%@ page contentType="text/html;charset=utf-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 <html>
 
 	<head>
+		<base href="<%=basePath%>" />
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>实验室综合管理系统</title>
@@ -16,6 +21,7 @@
 		<link rel="stylesheet" href="dist/css/AdminLTE.min.css">
 		<link rel="stylesheet" href="dist/css/skins/skin-blue.css">
 		<link rel="stylesheet" href="plugins/pace/pace.min.css" />
+		<link rel="stylesheet" href="plugins/bootstrap-slider/slider.css" />
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
 	  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -78,6 +84,7 @@
 					</div>
 				</nav>
 			</header>
+			<!-- Left side column. contains the logo and sidebar -->
 			<aside class="main-sidebar">
 
 				<!-- sidebar: style can be found in sidebar.less -->
@@ -113,24 +120,51 @@
 									<a href="#">我的任务</a>
 								</li>
 								<li>
-									<a href="user_project_list.jsp">项目列表</a>
+									<a href="admin_project_list.jsp">项目列表</a>
 								</li>
 								<li>
-									<a href="user_project_create.jsp">项目申请</a>
+									<a href="admin_project_create.jsp">项目申请</a>
+								</li>
+							</ul>
+						</li>
+						<li class="treeview">
+							<a href="#"><i class="fa fa-leaf"></i> <span>新闻</span>
+								<span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+							</a>
+							<ul class="treeview-menu">
+								<li>
+									<a href="admin_news_list.jsp">新闻列表</a>
+								</li>
+								<li>
+									<a href="news_create.jsp">写新闻</a>
 								</li>
 							</ul>
 						</li>
 						<li>
-							<a href="user_news_list.jsp"><i class="fa fa-bullhorn"></i> <span>新闻</span></a>
+							<a href="#"><i class="glyphicon glyphicon-user"></i> <span>人员管理</span></a>
 						</li>
 						<li>
-							<a href="#"><i class="fa fa-adjust"></i> <span>设备预约</span></a>
+							<a href="#"><i class="glyphicon glyphicon-wrench"></i> <span>设备预约</span></a>
 						</li>
 						<li>
-							<a href="#"><i class="fa fa-database"></i> <span>知识库</span></a>
+							<a href="#"><i class="fa fa-calculator "></i> <span>设备管理</span></a>
 						</li>
 						<li>
-							<a href="#"><i class="fa fa-comment"></i> <span>通知</span></a>
+							<a href="#"><i class="fa fa-bar-chart"></i> <span>比赛统计</span></a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-smile-o"></i> <span>荣誉系统</span></a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-database"></i> <span>工作简报</span></a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-file"></i> <span>文档管理</span></a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-calendar-o"></i> <span>知识库</span></a>
 						</li>
 
 					</ul>
@@ -141,28 +175,56 @@
 
 			<!-- Content Wrapper. Contains page content -->
 			<div class="content-wrapper">
-				<!-- Main content -->
-				<section class="content container-fluid">
-					<div class="box primary">
-						<div class="box-header">
-							<div class="box-title">${request.newsTitle}</div>
-							<hr />
-							<div class="box-info">编号：
-								<a>${request.newsId}</a>
+				<form action="#" method="post">
+					<section class="content container-fluid">
+						<div class="box box-danger">
+							<div class="box-header">${request.projectName}</div>
+						</div>
+
+						<div class="box box-primary">
+							<div class="box-header with-border">
+								<h3 class="box-title">进度信息</h3>
+								<div class="box-tools pull-right">
+									<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+								</div>
 							</div>
-							<div class="box-info">发表人：
-								<a>${request.pushUser}</a>
-							</div>
-							<div class="box-info">发表时间：
-								<a>${request.createDate}</a>
+							<div class="box-body with-border">
+								<input name="projectInfo" class="form-control" type="text" />
 							</div>
 						</div>
-						<div class="box-body">
-							<p>${request.newsContent}</p>
+
+						<div class="box box-info">
+							<div class="box-header with-border">
+								<h3 class="box-title">详细描述</h3>
+								<div class="box-tools pull-right">
+									<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+								</div>
+								<!-- /.box-tools -->
+							</div>
+							<!-- /.box-header -->
+							<div class="box-body">
+								<textarea class="textarea" name="projectContent" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+							</div>
+							<!-- /.box-body -->
 						</div>
-					</div>
-				</section>
-				<!-- /.content -->
+						<!-- /.box -->
+						<div class="box box-info">
+							<div class="box-header with-border">
+								<h3 class="box-title">进度</h3>
+							</div>
+							<div class="box-body">
+								<input id="projectProgress" type="text" value="0" class="slider form-control" data-slider-min="0" data-slider-max="100" data-slider-orientation="horizontal" data-slider-selection="before" data-slider-tooltip="show" data-slider-id="green">
+							</div>
+						</div>
+						<div class="box">
+							<div class="box-header with-border">操作</div>
+							<div class="box-body">
+								<button class="btn bg-green" type="submit">提交</button>
+							</div>
+						</div>
+					</section>
+				</form>
+
 			</div>
 			<!-- /.content-wrapper -->
 
@@ -175,7 +237,6 @@
 				<!-- Default to the left -->
 				<strong>Copyright &copy; 2018 <a href="https://github.com/MonkeyAndDog/">Mr.Hu</a>.</strong> All rights reserved.
 			</footer>
-
 			<!-- Add the sidebar's background. This div must be placed
   immediately after the control sidebar -->
 			<div class="control-sidebar-bg"></div>
@@ -188,18 +249,17 @@
 		<script src="bower_components/jquery/dist/jquery.min.js"></script>
 		<!-- Bootstrap 3.3.7 -->
 		<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="plugins/bootstrap-slider/bootstrap-slider.js"></script>
 		<!-- AdminLTE App -->
 		<script src="dist/js/adminlte.min.js"></script>
-		<script src="js/plugins.js"></script>
-
+		<script type="text/javascript" src="js/plugins.js"></script>
+		<script type="text/javascript" src="js/vue.min.js"></script>
 		<script>
-			function initDate() {}
-			window.onload = initDate;
+			$(function() {
+				$('.slider').slider();
+			});
 		</script>
 
-		<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. -->
 	</body>
 
 </html>

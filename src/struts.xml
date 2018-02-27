@@ -18,8 +18,14 @@
             <result name="do_not_exist">/login.jsp</result>
             <allowed-methods>login</allowed-methods>
         </action>
-        <action name="logout" class="org.mrhu.smartlab.action.LogOutAction">
+        <action name="logout" class="org.mrhu.smartlab.action.LogOutAction" method="execute">
             <result name="success">/login.jsp</result>
+            <allowed-methods>execute</allowed-methods>
+        </action>
+        <action name="regist" class="org.mrhu.smartlab.action.RegistUserAction" method="registUser">
+            <result name="success">/register.jsp</result>
+            <result name="error">/register.jsp</result>
+            <allowed-methods>registUser</allowed-methods>
         </action>
     </package>
     
@@ -35,4 +41,5 @@
             <allowed-methods>getProjectDetail</allowed-methods>
         </action>
     </package>
+    
 </struts>

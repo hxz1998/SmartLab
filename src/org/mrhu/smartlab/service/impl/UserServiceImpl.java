@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean exist(User user) {
-        User loadUser = userDao.load(user);
+        User loadUser = userDao.loadByUserName(user.getUsername());
         if(loadUser != null) {
             return true;
         } else {

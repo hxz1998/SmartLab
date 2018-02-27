@@ -20,6 +20,7 @@
 		<link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
 		<link rel="stylesheet" href="dist/css/AdminLTE.min.css">
 		<link rel="stylesheet" href="dist/css/skins/skin-blue.css">
+		<link rel="stylesheet" href="plugins/pace/pace.min.css" />
 
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -87,6 +88,7 @@
 			<aside class="main-sidebar">
 				<!-- sidebar: style can be found in sidebar.less -->
 				<section class="sidebar">
+
 					<!-- Sidebar user panel (optional) -->
 					<div class="user-panel">
 						<div class="pull-left image">
@@ -117,15 +119,15 @@
 									<a href="#">我的任务</a>
 								</li>
 								<li>
-									<a href="#">项目概览</a>
+									<a href="user_project_list.jsp">项目列表</a>
 								</li>
 								<li>
-									<a href="#">项目申请</a>
+									<a href="user_project_create.jsp">项目申请</a>
 								</li>
 							</ul>
 						</li>
 						<li>
-							<a href="#"><i class="fa fa-bullhorn"></i> <span>新闻</span></a>
+							<a href="user_news_list.jsp"><i class="fa fa-bullhorn"></i> <span>新闻</span></a>
 						</li>
 						<li>
 							<a href="#"><i class="fa fa-adjust"></i> <span>设备预约</span></a>
@@ -204,6 +206,7 @@
 
 		<!-- REQUIRED JS SCRIPTS -->
 
+		<script src="plugins/pace/pace.min.js"></script>
 		<!-- jQuery 3 -->
 		<script src="bower_components/jquery/dist/jquery.min.js"></script>
 		<!-- Bootstrap 3.3.7 -->

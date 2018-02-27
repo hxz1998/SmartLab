@@ -1,11 +1,16 @@
 <%--
   User: Mr.Hu
 --%>
-<%@ page contentType="text/html;charset=utf-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 <html>
 
 	<head>
+		<base href="<%=basePath%>" />
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>实验室综合管理系统</title>
@@ -16,6 +21,7 @@
 		<link rel="stylesheet" href="dist/css/AdminLTE.min.css">
 		<link rel="stylesheet" href="dist/css/skins/skin-blue.css">
 		<link rel="stylesheet" href="plugins/pace/pace.min.css" />
+		<link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" />
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
 	  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -66,7 +72,6 @@
 											<small>权限：${session.status}</small>
 										</p>
 									</li>
-									<!-- Menu Footer-->
 									<li class="user-footer">
 										<div class="pull-right">
 											<a href="logout.action" class="btn btn-default btn-flat">登出</a>
@@ -78,6 +83,7 @@
 					</div>
 				</nav>
 			</header>
+			<!-- Left side column. contains the logo and sidebar -->
 			<aside class="main-sidebar">
 
 				<!-- sidebar: style can be found in sidebar.less -->
@@ -143,42 +149,57 @@
 			<div class="content-wrapper">
 				<!-- Main content -->
 				<section class="content container-fluid">
-					<div class="box primary">
-						<div class="box-header">
-							<div class="box-title">${request.newsTitle}</div>
-							<hr />
-							<div class="box-info">编号：
-								<a>${request.newsId}</a>
+					<form action="#" method="post">
+						<div class="box box-primary">
+							<div class="box-header with-border">
+								<h3 class="box-title">项目信息</h3>
+								<div class="box-tools pull-right">
+									<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+								</div>
 							</div>
-							<div class="box-info">发表人：
-								<a>${request.pushUser}</a>
-							</div>
-							<div class="box-info">发表时间：
-								<a>${request.createDate}</a>
+							<div class="box-body with-border">
+								<input name="projectInfo" class="form-control" type="text" placeholder="项目名称" />
 							</div>
 						</div>
-						<div class="box-body">
-							<p>${request.newsContent}</p>
+
+						<div class="box box-info">
+							<div class="box-header with-border">
+								<h3 class="box-title">项目描述</h3>
+								<div class="box-tools pull-right">
+									<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+								</div>
+								<!-- /.box-tools -->
+							</div>
+							<!-- /.box-header -->
+							<div class="box-body">
+								<textarea class="textarea" name="projectContent" placeholder="请详细描述您的项目" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+							</div>
+							<!-- /.box-body -->
 						</div>
-					</div>
+						<!-- /.box -->
+						<div class="box">
+							<div class="box-header with-border">操作</div>
+							<div class="box-body">
+								<button class="btn bg-green" type="submit">提交</button>
+							</div>
+						</div>
+					</form>
 				</section>
-				<!-- /.content -->
 			</div>
-			<!-- /.content-wrapper -->
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
 
-			<!-- Main Footer -->
-			<footer class="main-footer">
-				<!-- To the right -->
-				<div class="pull-right hidden-xs">
-					任何你想到的
-				</div>
-				<!-- Default to the left -->
-				<strong>Copyright &copy; 2018 <a href="https://github.com/MonkeyAndDog/">Mr.Hu</a>.</strong> All rights reserved.
-			</footer>
-
-			<!-- Add the sidebar's background. This div must be placed
-  immediately after the control sidebar -->
-			<div class="control-sidebar-bg"></div>
+		<!-- Main Footer -->
+		<footer class="main-footer">
+			<!-- To the right -->
+			<div class="pull-right hidden-xs">
+				任何你想到的
+			</div>
+			<!-- Default to the left -->
+			<strong>Copyright &copy; 2018 <a href="https://github.com/MonkeyAndDog/">Mr.Hu</a>.</strong> All rights reserved.
+		</footer>
+		<div class="control-sidebar-bg"></div>
 		</div>
 		<!-- ./wrapper -->
 
@@ -190,16 +211,15 @@
 		<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<!-- AdminLTE App -->
 		<script src="dist/js/adminlte.min.js"></script>
-		<script src="js/plugins.js"></script>
-
+		<script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+		<script type="text/javascript" src="js/plugins.js"></script>
+		<script type="text/javascript" src="js/vue.min.js"></script>
 		<script>
-			function initDate() {}
-			window.onload = initDate;
+			//			$(".textarea").wysihtml5({
+			//				"image": false
+			//			});
 		</script>
 
-		<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. -->
 	</body>
 
 </html>

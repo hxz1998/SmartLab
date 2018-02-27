@@ -20,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
 		<link rel="stylesheet" href="dist/css/AdminLTE.min.css">
 		<link rel="stylesheet" href="dist/css/skins/skin-blue.css">
-
+		<link rel="stylesheet" href="plugins/pace/pace.min.css" />
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
 	  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -119,15 +119,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<a href="#">我的任务</a>
 								</li>
 								<li>
-									<a href="#">项目概览</a>
+									<a href="admin_project_list.jsp">项目列表</a>
 								</li>
 								<li>
-									<a href="#">项目申请</a>
+									<a href="admin_project_create.jsp">项目申请</a>
 								</li>
 							</ul>
 						</li>
-						<li>
-							<a href="#"><i class="fa fa-bullhorn"></i> <span>新闻</span></a>
+						<li class="treeview">
+							<a href="#"><i class="fa fa-leaf"></i> <span>新闻</span>
+								<span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+							</a>
+							<ul class="treeview-menu">
+								<li>
+									<a href="admin_news_list.jsp">新闻列表</a>
+								</li>
+								<li>
+									<a href="news_create.jsp">写新闻</a>
+								</li>
+							</ul>
 						</li>
 						<li>
 							<a href="#"><i class="glyphicon glyphicon-user"></i> <span>人员管理</span></a>
@@ -215,13 +227,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<!-- Default to the left -->
 				<strong>Copyright &copy; 2018 <a href="#">Mr.Hu</a>.</strong> All rights reserved.
 			</footer>
-
-			<!-- Add the sidebar's background. This div must be placed
-  immediately after the control sidebar -->
 			<div class="control-sidebar-bg"></div>
 		</div>
 		<!-- ./wrapper -->
 
+		<script src="plugins/pace/pace.min.js"></script>
 		<script src="bower_components/jquery/dist/jquery.min.js"></script>
 		<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script src="dist/js/adminlte.min.js"></script>

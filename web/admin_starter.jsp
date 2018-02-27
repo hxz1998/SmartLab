@@ -19,7 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
 		<link rel="stylesheet" href="dist/css/AdminLTE.min.css">
 		<link rel="stylesheet" href="dist/css/skins/skin-blue.css">
-
+		<link rel="stylesheet" href="plugins/pace/pace.min.css" />
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
 	  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -118,15 +118,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<a href="#">我的任务</a>
 								</li>
 								<li>
-									<a href="#">项目概览</a>
+									<a href="admin_project_list.jsp">项目列表</a>
 								</li>
 								<li>
-									<a href="#">项目申请</a>
+									<a href="admin_project_create.jsp">项目申请</a>
 								</li>
 							</ul>
 						</li>
-						<li>
-							<a href="#"><i class="fa fa-bullhorn"></i> <span>新闻</span></a>
+						<li class="treeview">
+							<a href="#"><i class="fa fa-leaf"></i> <span>新闻</span>
+								<span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+							</a>
+							<ul class="treeview-menu">
+								<li>
+									<a href="admin_news_list.jsp">新闻列表</a>
+								</li>
+								<li>
+									<a href="news_create.jsp">写新闻</a>
+								</li>
+							</ul>
 						</li>
 						<li>
 							<a href="#"><i class="glyphicon glyphicon-user"></i> <span>人员管理</span></a>
@@ -295,7 +307,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<thead>
 									<tr>
 										<th>名称</th>
-										<th>编号</th>
 										<th>负责人</th>
 										<th>进度</th>
 										<th>详情</th>
@@ -304,7 +315,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<tbody>
 									<tr v-for="item in projects">
 										<td>{{item.info}}</td>
-										<td>{{item.id}}</td>
 										<td>{{item.pm}}</td>
 										<td>
 											<div class="progress progress-xs progress-striped active">
@@ -319,7 +329,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<tfoot>
 									<tr>
 										<th>名称</th>
-										<th>编号</th>
 										<th>负责人</th>
 										<th>进度</th>
 										<th>详情</th>
@@ -351,7 +360,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!-- ./wrapper -->
 
 		<!-- REQUIRED JS SCRIPTS -->
-
+		<script src="plugins/pace/pace.min.js"></script>
 		<!-- jQuery 3 -->
 		<script src="bower_components/jquery/dist/jquery.min.js"></script>
 		<!-- Bootstrap 3.3.7 -->

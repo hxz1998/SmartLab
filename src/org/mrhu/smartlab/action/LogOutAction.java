@@ -13,7 +13,6 @@ import java.util.Map;
 
 public class LogOutAction extends ActionSupport {
 
-
     @Override
     public String execute() {
         try{
