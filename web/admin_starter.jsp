@@ -8,7 +8,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<base href="<%=basePath%>" />
 		<meta charset="utf-8">
@@ -370,8 +369,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				/**
 				 *初始化新闻列表 
 				 */
-				mui.ajax('http://localhost:8080/smartlab/api/get/news/list', {
-					type: 'post',
+                mui.ajax('http://101.200.56.88:8080/smartlab/api/get/news/list', {
+                    data:{
+                        apikey:'HDFY32JN28'
+                    },
+                    type: 'post',
 					success: function(data) {
 						var oJson = JSON.parse(data);
 						news.news = news.news.concat(covertNews(oJson));
@@ -385,8 +387,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				/**
 				 *初始化项目列表 
 				 */
-				mui.ajax('http://localhost:8080/smartlab/api/get/project/list', {
-					type: 'post',
+                mui.ajax('http://101.200.56.88:8080/smartlab/api/get/project/list', {
+                    data:{
+                        apikey:'HDFY32JN28'
+                    },
+                    type: 'post',
 					success: function(data) {
 						var oJson = JSON.parse(data);
 						projects.projects = projects.projects.concat(covertProject(oJson));
