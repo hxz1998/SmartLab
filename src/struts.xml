@@ -11,7 +11,10 @@
     <constant name="struts.i18n.encoding" value="UTF-8"/>
     
     <package name="default" extends="struts-default" >
-        <default-action-ref name="noSuchAction"></default-action-ref>
+        <default-action-ref name="noSuchAction"/>
+        <global-results>
+            <result name="error">404.jsp</result>
+        </global-results>
         <action name="noSuchAction">
             <result>/404.jsp</result>
         </action>
@@ -52,9 +55,24 @@
         <action name="createProject" class="org.mrhu.smartlab.action.CreateProjectAction" method="createProject">
             <result name="admin_success">/admin_project_create.jsp</result>
             <result name="user_success">/user_project_create.jsp</result>
-            <result name="error">/login.jsp</result>
+            <result name="error">/404.jsp</result>
             <result name="no_login">/login.jsp</result>
             <allowed-methods>createProject</allowed-methods>
+        </action>
+    </package>
+    
+    <package name="edit" extends="default">
+        <action name="editDispatcher" class="org.mrhu.smartlab.action.ProjectEditDispatcherAction" method="dispatcher">
+            <result name="admin_success">/admin_project_edit.jsp</result>
+            <result name="user_success">/user_project_edit.jsp</result>
+            <result name="no_login">/login.jsp</result>
+            <result name="error">/404.jsp</result>
+        </action>
+        <action name="editProject" class="org.mrhu.smartlab.action.EditProgressAction" method="edit">
+            <result name="admin_success" type="redirect">pullProjectDetail.action?projectId=${projectId}</result>
+            <result name="user_success" type="redirect">pullProjectDetail.action?projectId=${projectId}</result>
+            <result name="error">/404.jsp</result>
+            <result name="no_login">/login.jsp</result>
         </action>
     </package>
 </struts>

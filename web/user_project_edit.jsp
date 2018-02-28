@@ -148,10 +148,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 			<!-- Content Wrapper. Contains page content -->
 			<div class="content-wrapper">
-				<form action="#" method="post">
-					<section class="content container-fluid">
+				<section class="content container-fluid">
+					<form action="editProject.action?projectId=${request.projectId}" method="post">
 						<div class="box box-danger">
-							<div class="box-header">${request.projectName}</div>
+							<div class="box-header">
+								名称：<span class="text-center text-blue">${request.projectName}</span><hr />
+								编号：<span class="text-center text-blue">${request.projectId}</span><br>
+								负责人：<span class="text-center text-blue">${request.projectManager}</span>
+							</div>
 						</div>
 
 						<div class="box box-primary">
@@ -162,7 +166,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 							</div>
 							<div class="box-body with-border">
-								<input name="projectInfo" class="form-control" type="text" />
+								<input name="progressInfo" class="form-control" type="text" />
 							</div>
 						</div>
 
@@ -176,7 +180,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 							<!-- /.box-header -->
 							<div class="box-body">
-								<textarea class="textarea" name="projectContent" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+								<textarea class="textarea" name="progressContent" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
 							</div>
 							<!-- /.box-body -->
 						</div>
@@ -186,7 +190,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<h3 class="box-title">进度</h3>
 							</div>
 							<div class="box-body">
-								<input id="projectProgress" type="text" value="0" class="slider form-control" data-slider-min="0" data-slider-max="100" data-slider-orientation="horizontal" data-slider-selection="before" data-slider-tooltip="show" data-slider-id="green">
+								<input name="progress" id="projectProgress" type="text" value="0" class="slider form-control" data-slider-min="0" data-slider-max="100" data-slider-orientation="horizontal" data-slider-selection="before" data-slider-tooltip="show" data-slider-id="green">
 							</div>
 						</div>
 						<div class="box">
@@ -195,8 +199,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<button class="btn bg-green" type="submit">提交</button>
 							</div>
 						</div>
-					</section>
-				</form>
+					</form>
+				</section>
 
 			</div>
 			<!-- /.content-wrapper -->

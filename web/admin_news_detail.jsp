@@ -127,7 +127,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</ul>
 						</li>
 						<li class="treeview">
-							<a href="#"><i class="fa fa-leaf"></i> <span>新闻</span>
+							<a href="#"><i class="fa fa-bullhorn"></i> <span>新闻</span>
 								<span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>

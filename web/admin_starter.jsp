@@ -126,7 +126,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</ul>
 						</li>
 						<li class="treeview">
-							<a href="#"><i class="fa fa-leaf"></i> <span>新闻</span>
+							<a href="#"><i class="fa fa-bullhorn"></i> <span>新闻</span>
 								<span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -353,8 +353,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<!-- Default to the left -->
 				<strong>Copyright &copy; 2018 <a href="https://github.com/MonkeyAndDog/">Mr.Hu</a>.</strong> All rights reserved.
 			</footer>
-			<!-- Add the sidebar's background. This div must be placed
-  immediately after the control sidebar -->
 			<div class="control-sidebar-bg"></div>
 		</div>
 		<!-- ./wrapper -->
@@ -378,8 +376,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				/**
 				 *初始化新闻列表 
 				 */
-                mui.ajax('http://101.200.56.88:8080/smartlab/api/get/news/list', {
-                    data:{
+				// mui.ajax('http://localhost:8080/smartlab/api/get/news/list', {
+													mui.ajax('http://101.200.56.88:8080/smartlab/api/get/news/list', {
+						data:{
                         apikey:'HDFY32JN28'
                     },
                     type: 'post',
@@ -396,8 +395,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				/**
 				 *初始化项目列表 
 				 */
-                mui.ajax('http://101.200.56.88:8080/smartlab/api/get/project/list', {
-                    data:{
+				// mui.ajax('http://localhost:8080/smartlab/api/get/project/list', {
+													mui.ajax('http://101.200.56.88:8080/smartlab/api/get/news/list', {
+						data:{
                         apikey:'HDFY32JN28'
                     },
                     type: 'post',

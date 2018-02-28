@@ -128,7 +128,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</ul>
 						</li>
 						<li class="treeview">
-							<a href="#"><i class="fa fa-leaf"></i> <span>新闻</span>
+							<a href="#"><i class="fa fa-bullhorn"></i> <span>新闻</span>
 								<span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -248,7 +248,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="box-header">操作</div>
 						<div class="box-body">
 							<button class="btn bg-red">删除</button>&nbsp;
-							<button class="btn bg-blue">更新</button>
+							<button class="btn bg-blue" onclick="edit()">更新</button>
 						</div>
 					</div>
 				</section>
@@ -280,6 +280,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script src="js/vue.min.js"></script>
 		
 		<script>
+			function edit() {
+				window.location.href='editDispatcher.action?projectId=' + "${request.projectId}";
+			}
+			
 			mui.init(
 				initDate()
 			);

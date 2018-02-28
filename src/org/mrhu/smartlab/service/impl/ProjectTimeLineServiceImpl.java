@@ -7,11 +7,13 @@ import org.mrhu.smartlab.model.Project;
 import org.mrhu.smartlab.model.ProjectTimeline;
 import org.mrhu.smartlab.service.ProjectTimeLineService;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 @Component("projectTimeLineService")
+@Transactional
 public class ProjectTimeLineServiceImpl implements ProjectTimeLineService {
 
     private ProjectTimeLineDao projectTimeLineDao;

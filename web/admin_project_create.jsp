@@ -89,7 +89,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 				<!-- sidebar: style can be found in sidebar.less -->
 				<section class="sidebar">
-
 					<!-- Sidebar user panel (optional) -->
 					<div class="user-panel">
 						<div class="pull-left image">
@@ -128,7 +127,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</ul>
 						</li>
 						<li class="treeview">
-							<a href="#"><i class="fa fa-leaf"></i> <span>新闻</span>
+							<a href="#"><i class="fa fa-bullhorn"></i> <span>新闻</span>
 								<span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -176,8 +175,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<!-- Content Wrapper. Contains page content -->
 			<div class="content-wrapper">
 				<!-- Main content -->
-				<form action="createProject.action" method="post">
-					<section class="content container-fluid">
+				<section class="content container-fluid">
+					<form action="createProject.action" method="post">
 						<div class="box box-primary">
 							<div class="box-header with-border">
 								<h3 class="box-title">项目信息</h3>
@@ -211,23 +210,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<button class="btn bg-green" type="submit">提交</button> &nbsp;&nbsp; ${result}
 							</div>
 						</div>
-					</section>
-				</form>
+					</form>
+				</section>
+				<!-- /.content -->
 			</div>
-			<!-- /.content -->
-		</div>
-		<!-- /.content-wrapper -->
+			<!-- /.content-wrapper -->
 
-		<!-- Main Footer -->
-		<footer class="main-footer">
-			<!-- To the right -->
-			<div class="pull-right hidden-xs">
-				任何你想到的
-			</div>
-			<!-- Default to the left -->
-			<strong>Copyright &copy; 2018 <a href="https://github.com/MonkeyAndDog/">Mr.Hu</a>.</strong> All rights reserved.
-		</footer>
-		<div class="control-sidebar-bg"></div>
+			<!-- Main Footer -->
+			<footer class="main-footer">
+				<!-- To the right -->
+				<div class="pull-right hidden-xs">
+					任何你想到的
+				</div>
+				<!-- Default to the left -->
+				<strong>Copyright &copy; 2018 <a href="https://github.com/MonkeyAndDog/">Mr.Hu</a>.</strong> All rights reserved.
+			</footer>
+			<div class="control-sidebar-bg"></div>
 		</div>
 		<!-- ./wrapper -->
 
@@ -244,8 +242,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="js/vue.min.js"></script>
 		<script>
 			mui.init(initDate())
-			function initDate(){
-			}
+
+			function initDate() {}
 		</script>
 
 	</body>

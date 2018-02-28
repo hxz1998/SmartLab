@@ -219,7 +219,7 @@
 					<div class="box">
 						<div class="box-header">功能</div>
 						<div class="box-body">
-							<button class="btn bg-blue">更新</button>
+							<button class="btn bg-blue" onclick="edit()">更新</button>
 						</div>
 					</div>
 				</section>
@@ -245,11 +245,18 @@
 		<script type="text/javascript" src="js/plugins.js"></script>
 		<script type="text/javascript" src="js/vue.min.js"></script>
 		<script type="text/javascript">
+			
+			
+			function edit() {
+				window.location.href='editDispatcher.action?projectId=' + "${request.projectId}";
+			}
 			mui.init(
 				initDate()
 			);
 			
 			function initDate() {
+				
+				//初始化项目细节
 				var timeline = new Vue({
 					el: '#timeline',
 					data: {
@@ -267,7 +274,7 @@
 				memberList.items = ${request.memberAndDuty};
 				
 			}
-			
+
 		</script>
 	</body>
 

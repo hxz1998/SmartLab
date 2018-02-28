@@ -127,7 +127,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</ul>
 						</li>
 						<li class="treeview">
-							<a href="#"><i class="fa fa-leaf"></i> <span>新闻</span>
+							<a href="#"><i class="fa fa-bullhorn"></i> <span>新闻</span>
 								<span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -261,11 +261,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				/**
 				 *初始化项目列表 
 				 */
-                mui.ajax('http://101.200.56.88:8080/smartlab/api/get/project/list', {
-                    data:{
-                        apikey:'HDFY32JN28'
-                    },
-                    type: 'post',
+				// mui.ajax('http://localhost:8080/smartlab/api/get/project/list', {
+													mui.ajax('http://101.200.56.88:8080/smartlab/api/get/news/list', {
+						data: {
+						apikey: 'HDFY32JN28'
+					},
+					type: 'post',
 					success: function(data) {
 						var oJson = JSON.parse(data);
 						projects.projects = projects.projects.concat(covertProject(oJson));
