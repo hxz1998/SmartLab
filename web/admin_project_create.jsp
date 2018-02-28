@@ -176,7 +176,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<!-- Content Wrapper. Contains page content -->
 			<div class="content-wrapper">
 				<!-- Main content -->
-				<form action="#" method="post">
+				<form action="createProject.action" method="post">
 					<section class="content container-fluid">
 						<div class="box box-primary">
 							<div class="box-header with-border">
@@ -186,7 +186,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 							</div>
 							<div class="box-body with-border">
-								<input name="projectInfo" class="form-control" type="text" placeholder="项目名称" />
+								<input id="projectInfo" name="projectInfo" class="form-control" type="text" placeholder="项目名称" />
 							</div>
 						</div>
 
@@ -200,7 +200,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 							<!-- /.box-header -->
 							<div class="box-body">
-								<textarea class="textarea" name="projectContent" placeholder="请详细描述您的项目" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+								<textarea id="projectContent" class="textarea" name="projectContent" placeholder="请详细描述您的项目" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
 							</div>
 							<!-- /.box-body -->
 						</div>
@@ -208,7 +208,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="box">
 							<div class="box-header with-border">操作</div>
 							<div class="box-body">
-								<button class="btn bg-green" type="submit">提交</button>
+								<button class="btn bg-green" type="submit">提交</button> &nbsp;&nbsp; ${result}
 							</div>
 						</div>
 					</section>
@@ -243,9 +243,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="js/plugins.js"></script>
 		<script type="text/javascript" src="js/vue.min.js"></script>
 		<script>
-			//			$(".textarea").wysihtml5({
-			//				"image": false
-			//			});
+			mui.init(initDate())
+			function initDate(){
+			}
 		</script>
 
 	</body>

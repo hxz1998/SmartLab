@@ -1,0 +1,12 @@
+org.mrhu.smartlab.action
+org.mrhu.smartlab.api
+org.mrhu.smartlab.api.read
+org.mrhu.smartlab.dao
+org.mrhu.smartlab.dao.impl
+org.mrhu.smartlab.dispatcher
+org.mrhu.smartlab.dto
+org.mrhu.smartlab.filter
+org.mrhu.smartlab.model
+org.mrhu.smartlab.service
+org.mrhu.smartlab.service.impl
+org.mrhu.smartlab.util

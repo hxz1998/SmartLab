@@ -48,4 +48,13 @@
         </action>
     </package>
     
+    <package name="create" extends="default">
+        <action name="createProject" class="org.mrhu.smartlab.action.CreateProjectAction" method="createProject">
+            <result name="admin_success">/admin_project_create.jsp</result>
+            <result name="user_success">/user_project_create.jsp</result>
+            <result name="error">/login.jsp</result>
+            <result name="no_login">/login.jsp</result>
+            <allowed-methods>createProject</allowed-methods>
+        </action>
+    </package>
 </struts>

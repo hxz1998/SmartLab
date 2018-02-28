@@ -439,7 +439,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				var newItems = [];
 				items.forEach(function(item) {
 					newItems.push({
-						info: item.content,
+						info: item.info,
 						id: item.id,
 						pm: item.pmUser.name,
 						progress: item.progress
