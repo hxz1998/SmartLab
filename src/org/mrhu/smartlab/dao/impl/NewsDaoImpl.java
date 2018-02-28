@@ -24,7 +24,7 @@ public class NewsDaoImpl implements NewsDao {
 
     @Override
     public void save(News news) {
-
+        hibernateTemplate.save(news);
     }
 
     @Override

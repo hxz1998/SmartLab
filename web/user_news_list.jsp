@@ -106,7 +106,7 @@
 						<li class="header">导航</li>
 						<!-- Optionally, you can add icons to the links -->
 						<li>
-							<a href="#"><i class="fa fa-dashboard"></i> <span>操作盘</span></a>
+							<a><i class="fa fa-dashboard"></i> <span>操作盘</span></a>
 						</li>
 						<li class="treeview">
 							<a href="#"><i class="fa fa-leaf"></i> <span>项目</span>
@@ -116,7 +116,7 @@
 							</a>
 							<ul class="treeview-menu">
 								<li>
-									<a href="#">我的任务</a>
+									<a href="pullTastList.action">我的任务</a>
 								</li>
 								<li>
 									<a href="user_project_list.jsp">项目列表</a>
@@ -130,13 +130,13 @@
 							<a href="user_news_list.jsp"><i class="fa fa-bullhorn"></i> <span>新闻</span></a>
 						</li>
 						<li>
-							<a href="#"><i class="fa fa-adjust"></i> <span>设备预约</span></a>
+							<a href="machine.action"><i class="fa fa-adjust"></i> <span>设备预约</span></a>
 						</li>
 						<li>
-							<a href="#"><i class="fa fa-database"></i> <span>知识库</span></a>
+							<a href="knowledge.action"><i class="fa fa-database"></i> <span>知识库</span></a>
 						</li>
 						<li>
-							<a href="#"><i class="fa fa-comment"></i> <span>通知</span></a>
+							<a href="inform.action"><i class="fa fa-comment"></i> <span>通知</span></a>
 						</li>
 
 					</ul>
@@ -198,7 +198,7 @@
 					任何你想到的
 				</div>
 				<!-- Default to the left -->
-				<strong>Copyright &copy; 2018 <a href="https://github.com/MonkeyAndDog/">Mr.Hu</a>.</strong> All rights reserved.
+				<strong>Copyright &copy; 2018 <a  >Mr.Hu</a>.</strong> All rights reserved.
 			</footer>
 			<div class="control-sidebar-bg"></div>
 		</div>

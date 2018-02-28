@@ -106,7 +106,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<li class="header">导航</li>
 						<!-- Optionally, you can add icons to the links -->
 						<li>
-							<a href="#"><i class="fa fa-dashboard"></i> <span>操作盘</span></a>
+							<a><i class="fa fa-dashboard"></i> <span>操作盘</span></a>
 						</li>
 						<li class="treeview">
 							<a href="#"><i class="fa fa-leaf"></i> <span>项目</span>
@@ -116,7 +116,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</a>
 							<ul class="treeview-menu">
 								<li>
-									<a href="#">我的任务</a>
+									<a href="pullTaskList.action">我的任务</a>
 								</li>
 								<li>
 									<a href="admin_project_list.jsp">项目列表</a>
@@ -142,28 +142,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</ul>
 						</li>
 						<li>
-							<a href="#"><i class="glyphicon glyphicon-user"></i> <span>人员管理</span></a>
+							<a href="userManage.action"><i class="glyphicon glyphicon-user"></i> <span>人员管理</span></a>
 						</li>
 						<li>
-							<a href="#"><i class="glyphicon glyphicon-wrench"></i> <span>设备预约</span></a>
+							<a href="machine.action"><i class="glyphicon glyphicon-wrench"></i> <span>设备预约</span></a>
 						</li>
 						<li>
-							<a href="#"><i class="fa fa-calculator "></i> <span>设备管理</span></a>
+							<a href="machineManage.action"><i class="fa fa-calculator "></i> <span>设备管理</span></a>
 						</li>
 						<li>
-							<a href="#"><i class="fa fa-bar-chart"></i> <span>比赛统计</span></a>
+							<a href="contest.action"><i class="fa fa-bar-chart"></i> <span>比赛统计</span></a>
 						</li>
 						<li>
-							<a href="#"><i class="fa fa-smile-o"></i> <span>荣誉系统</span></a>
+							<a href="honor.action"><i class="fa fa-smile-o"></i> <span>荣誉系统</span></a>
 						</li>
 						<li>
-							<a href="#"><i class="fa fa-database"></i> <span>工作简报</span></a>
+							<a href="report.action"><i class="fa fa-database"></i> <span>工作简报</span></a>
 						</li>
 						<li>
-							<a href="#"><i class="fa fa-file"></i> <span>文档管理</span></a>
+							<a href="document.action"><i class="fa fa-file"></i> <span>文档管理</span></a>
 						</li>
 						<li>
-							<a href="#"><i class="fa fa-calendar-o"></i> <span>知识库</span></a>
+							<a href="knowledge.action"><i class="fa fa-calendar-o"></i> <span>知识库</span></a>
 						</li>
 
 					</ul>
@@ -225,7 +225,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					任何你想到的
 				</div>
 				<!-- Default to the left -->
-				<strong>Copyright &copy; 2018 <a href="#">Mr.Hu</a>.</strong> All rights reserved.
+				<strong>Copyright &copy; 2018 <a>Mr.Hu</a>.</strong> All rights reserved.
 			</footer>
 			<div class="control-sidebar-bg"></div>
 		</div>

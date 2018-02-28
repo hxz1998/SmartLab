@@ -13,7 +13,8 @@
     <package name="default" extends="struts-default" >
         <default-action-ref name="noSuchAction"/>
         <global-results>
-            <result name="error">404.jsp</result>
+            <result name="error">/404.jsp</result>
+            <result name="no_login">/login.jsp</result>
         </global-results>
         <action name="noSuchAction">
             <result>/404.jsp</result>
@@ -40,24 +41,25 @@
         <action name="pullNewsDetail" class="org.mrhu.smartlab.action.PullNewsAction" method="getNewsDetail">
             <result name="admin_success">/admin_news_detail.jsp</result>
             <result name="user_success">/user_news_detail.jsp</result>
-            <result name="no_login">/login.jsp</result>
             <allowed-methods>getNewsDetail</allowed-methods>
         </action>
         <action name="pullProjectDetail" class="org.mrhu.smartlab.action.PullProjectAction" method="getProjectDetail">
             <result name="admin_success">/admin_project_details.jsp</result>
             <result name="user_success">/user_project_details.jsp</result>
-            <result name="no_login">/login.jsp</result>
             <allowed-methods>getProjectDetail</allowed-methods>
         </action>
     </package>
     
     <package name="create" extends="default">
         <action name="createProject" class="org.mrhu.smartlab.action.CreateProjectAction" method="createProject">
-            <result name="admin_success">/admin_project_create.jsp</result>
-            <result name="user_success">/user_project_create.jsp</result>
-            <result name="error">/404.jsp</result>
-            <result name="no_login">/login.jsp</result>
+            <result name="admin_success" type="redirect">pullProjectDetail.action?projectId=${projectId}</result>
+            <result name="user_success" type="redirect">pullProjectDetail.action?projectId=${projectId}</result>
             <allowed-methods>createProject</allowed-methods>
+        </action>
+        <action name="createNews" class="org.mrhu.smartlab.action.CreateNewsAction" method="createNews">
+            <result name="admin_success" type="redirect">pullNewsDetail.action?newsId=${newsId}</result>
+            <result name="user_success" type="redirect">pullNewsDetail.action?newsId=${newsId}</result>
+            <allowed-methods>createNews</allowed-methods>
         </action>
     </package>
     
@@ -65,14 +67,10 @@
         <action name="editDispatcher" class="org.mrhu.smartlab.action.ProjectEditDispatcherAction" method="dispatcher">
             <result name="admin_success">/admin_project_edit.jsp</result>
             <result name="user_success">/user_project_edit.jsp</result>
-            <result name="no_login">/login.jsp</result>
-            <result name="error">/404.jsp</result>
         </action>
         <action name="editProject" class="org.mrhu.smartlab.action.EditProgressAction" method="edit">
             <result name="admin_success" type="redirect">pullProjectDetail.action?projectId=${projectId}</result>
             <result name="user_success" type="redirect">pullProjectDetail.action?projectId=${projectId}</result>
-            <result name="error">/404.jsp</result>
-            <result name="no_login">/login.jsp</result>
         </action>
     </package>
 </struts>

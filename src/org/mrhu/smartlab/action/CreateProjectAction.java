@@ -26,6 +26,7 @@ public class CreateProjectAction extends ActionSupport implements SessionAware, 
     private String projectInfo;
     private String projectContent;
     private String result;
+    private String projectId;
 
     private ProjectService projectService;
     private UserService userService;
@@ -55,7 +56,7 @@ public class CreateProjectAction extends ActionSupport implements SessionAware, 
 
             projectService.save(project);
             project = projectService.get(project);
-
+            projectId = project.getId();
             ProjectMemberDuty duty = new ProjectMemberDuty();
             duty.setDescribe("创建者");
             duty.setProject(project);
@@ -129,5 +130,13 @@ public class CreateProjectAction extends ActionSupport implements SessionAware, 
     @Override
     public void setRequest(Map<String, Object> request) {
         this.request = request;
+    }
+
+    public String getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
     }
 }
