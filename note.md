@@ -35,3 +35,39 @@
     http://***?username=abc       ->正确写法
     http://***?username= abc      ->错误写法
     ```
+7. 防止用户直接访问jsp页面
+    解决方法：继承```org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter```，然后手写处理逻辑
+    ```
+    public class JSPFilter extends org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter {
+    
+        public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
+            HttpServletRequest httpServletRequest = (HttpServletRequest) req;
+            RequestDispatcher dispatcher = req.getRequestDispatcher("login.jsp");
+            HttpSession session = ((HttpServletRequest) req).getSession();
+            String uri = httpServletRequest.getRequestURI();
+    
+            //如果请求路径以.jsp结尾，且不是注册页面（register.jsp）,将请求重定向到登录界面
+            if(uri != null && uri.endsWith(".jsp") && !uri.endsWith("register.jsp")) {
+                if(session.getAttribute("username") == null) {
+                    dispatcher.forward(req, resp);
+                }
+            }
+            //最后调用struts2的处理
+            super.doFilter(req, resp, chain);
+        }
+    
+    }
+    ```
+    然后在web.xml配置文件中配置使用过滤器
+    ```
+    <!--防止用户直接访问jsp文件-->
+    <filter>
+        <filter-name>JSPFilter</filter-name>
+        <filter-class>org.mrhu.smartlab.filter.JSPFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>JSPFilter</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+    ```
+    

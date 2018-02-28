@@ -66,26 +66,6 @@ public class LoginAction extends ActionSupport implements ModelDriven<UserLoginD
                     loginStatus="密码错误";
                     return PASSWORD_ERROR;
                 }
-           /* if(loadUser.getPassword().equals(user.getPassword()) &&
-                    loadUser.getUsername().equals(user.getUsername()) &&
-                    loadUser.getStatus().equals(Status.USER)) {
-                name = loadUser.getName();
-                session.put("username", loadUser.getUsername());
-                session.put("name", name);
-                session.put("status", loadUser.getStatus());
-                return USER;
-            } else if(loadUser.getPassword().equals(user.getPassword()) &&
-                    loadUser.getUsername().equals(user.getUsername()) &&
-                    loadUser.getStatus().equals(Status.ADMINISTRATOR)) {
-                name = loadUser.getName();
-                session.put("name", name);
-                session.put("username", loadUser.getUsername());
-                session.put("status", loadUser.getStatus());
-                return ADMIN;
-            } else if ( !loadUser.getPassword().equals(user.getPassword())){
-                loginStatus="密码错误";
-                return PASSWORD_ERROR;
-            }*/
             }
         }
 
