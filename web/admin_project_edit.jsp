@@ -176,7 +176,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<!-- Content Wrapper. Contains page content -->
 			<div class="content-wrapper">
 
-				<section class="content container-fluid">
+				<section class="content">
 					<form action="editProject.action?projectId=${request.projectId}" method="post">
 						<div class="box box-danger">
 							<div class="box-header">

@@ -146,7 +146,7 @@
 
 			<!-- Content Wrapper. Contains page content -->
 			<div class="content-wrapper">
-				<section class="content container-fluid">
+				<section class="content">
 					<div class="box">
 						<div class="box-header">
 							${request.projectInfo}

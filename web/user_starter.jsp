@@ -148,7 +148,7 @@
 			<!-- Content Wrapper. Contains page content -->
 			<div class="content-wrapper">
 				<!-- Main content -->
-				<section class="content container-fluid">
+				<section class="content">
 					<div id="newsList" class="box box-primary">
 						<div class="box-header">
 							<h3 class="box-title">新闻列表</h3>
@@ -353,8 +353,8 @@
 				/**
 				 *初始化新闻列表 
 				 */
-				mui.ajax('http://localhost:8080/smartlab/api/get/news/list', {
-													// mui.ajax('http://101.200.56.88:8080/smartlab/api/get/news/list', {
+				// mui.ajax('http://localhost:8080/smartlab/api/get/news/list', {
+													mui.ajax('http://101.200.56.88:8080/smartlab/api/get/news/list', {
 						data: {
 						apikey: 'HDFY32JN28'
 					},

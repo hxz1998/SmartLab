@@ -175,7 +175,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<!-- Content Wrapper. Contains page content -->
 			<div class="content-wrapper">
 				<!-- Main content -->
-				<section class="content container-fluid">
+				<section class="content">
 					<div class="box primary">
 						<div class="box-header">
 							<div class="box-title">${request.newsTitle}</div>

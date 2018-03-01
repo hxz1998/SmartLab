@@ -148,7 +148,7 @@
 
 			<!-- Content Wrapper. Contains page content -->
 			<div class="content-wrapper">
-				<section class="content container-fluid">
+				<section class="content">
 
 					<!--
 	        	作者：1466947023@qq.com

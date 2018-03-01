@@ -20,7 +20,7 @@
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/smartlab?characterEncoding=utf-8"/>
         <property name="username" value="root"/>
-        <property name="password" value="1111"/>
+        <property name="password" value="woxinyongheng"/>
     </bean>
     
     <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
